@@ -6,33 +6,35 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
 	public float speed;
-
 	private Rigidbody rb;
-
-	private int count;
-
-	public Text countText;
-
-	public Text winText;
+	public GameObject stage1;
+	public GameObject stage2;
+	public GameObject stage2PickUp;
+	public GameObject cube;
+	public GameObject cylinder;
+	public GameObject capsule;
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
-		count = 0;
-		SetCountText ();
-		winText.text = "";
 	}
 	
 	void FixedUpdate() {
-		//float moveHorizontal = Input.GetAxis ("Horizontal");
-		//float moveVertical = Input.GetAxis ("Vertical");
+		// mobileMovement();
+		keyboardMovement();
+	}
 
-		//Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+	void keyboardMovement() {
+		float moveHorizontal = Input.GetAxis ("Horizontal");
+		float moveVertical = Input.GetAxis ("Vertical");
 
+		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		rb.AddForce (movement * speed);
+	}
+
+	void mobileMovement() {
 		Vector3 dir = Vector3.zero;
-
 		// we assume that device is held parallel to the ground
 		// and Home button is in the right hand
-
 		// remap device acceleration axis to game coordinates:
 		//  1) XY plane of the device is mapped onto XZ plane
 		//  2) rotated 90 degrees around Y axis
@@ -48,24 +50,47 @@ public class PlayerController : MonoBehaviour {
 
 		// Move object
 		rb.transform.Translate(dir * speed);
-
-		//rb.AddForce(dir * speed);
-
-		//rb.AddForce (movement * speed);
+		// rb.AddForce(dir * speed);
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if(other.gameObject.CompareTag ("Pick Up")) {
-			other.gameObject.SetActive (false);
-			count = count + 1;
-			SetCountText ();
+		switch (other.gameObject.name) {
+			case "Stage1PickUp":
+				other.gameObject.SetActive (false);
+				stage1.SetActive (true);
+				break;
+			case "CubeObject":
+				stage2PickUp.SetActive (true);
+				capsule.SetActive (false);
+				cylinder.SetActive (false);
+				gameObject.SetActive (false);
+				break;
+			case "CylinderObject":
+				stage2PickUp.SetActive (true);
+				cube.SetActive (false);
+				capsule.SetActive (false);
+				gameObject.SetActive (false);
+				break;
+			case "CapsuleObject":
+				stage2PickUp.SetActive (true);
+				cube.SetActive (false);
+				cylinder.SetActive (false);
+				gameObject.SetActive (false);
+				break;
 		}
+
+
 	}
 
-	void SetCountText() {
-		countText.text = "Count: " + count.ToString ();
-		if(count >= 5) {
-			winText.text = "You win!";
-		}
+	void ChangeColor() {
+		GameObject player = rb.gameObject;
+		Color whateverColor = new Color(0.6f,0.5f,0.5f,1);
+
+		MeshRenderer gameObjectRenderer = player.GetComponent<MeshRenderer>();
+
+		Material newMaterial = new Material(Shader.Find("Standard"));
+
+		newMaterial.color = whateverColor;
+		gameObjectRenderer.material = newMaterial ;
 	}
 }
