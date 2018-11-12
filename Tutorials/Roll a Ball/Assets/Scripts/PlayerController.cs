@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		// mobileMovement();
-		keyboardMovement();
+		mobileMovement();
+		// keyboardMovement();
 	}
 
 	void keyboardMovement() {
