@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void FixedUpdate() {
 		mobileMovement();
-		// keyboardMovement();
+		//keyboardMovement();
 	}
 
 	void keyboardMovement() {
