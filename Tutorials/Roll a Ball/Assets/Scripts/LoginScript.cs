@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LoginScript : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class LoginScript : MonoBehaviour {
 
 	public GameObject loginObjectUI;
 
-	public GameObject arObjects;
+	//public GameObject arObjects;
 
 	public GameObject userInfoUI;
 
@@ -23,8 +24,10 @@ public class LoginScript : MonoBehaviour {
 			Debug.Log ("Login Successful!");
 		}
 		loginObjectUI.SetActive (false);
-		arObjects.SetActive (true);
+		//arObjects.SetActive (true);
 		DisplayUserInfoUI (username.text);
+		SceneManager.LoadScene ("MiniGame");
+
 	}
 
 	public void DisplayUserInfoUI (string user) {
@@ -36,5 +39,11 @@ public class LoginScript : MonoBehaviour {
 		userName.text = "Jagdeesh Basavaraju";
 		userID.text = user;
 		performance.text = "Doing OK!";
+	}
+
+	public void populateStaticInfo () {
+		StaticGameInfo.userName = "Jagdeesh Basavaraju";
+		StaticGameInfo.userID = username.text;
+		StaticGameInfo.performance = "Doing OK!";
 	}
 }

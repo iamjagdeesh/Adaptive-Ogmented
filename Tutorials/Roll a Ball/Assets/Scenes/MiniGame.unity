@@ -218,6 +218,9 @@ MonoBehaviour:
   capsule: {fileID: 1473081450}
   titleText: {fileID: 1763783944}
   hintText: {fileID: 644027617}
+  userName: {fileID: 896179301}
+  userID: {fileID: 1380076225}
+  performance: {fileID: 527592665}
 --- !u!54 &1796754
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -231,7 +234,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!1 &3038512
 GameObject:
@@ -419,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &35364531
 RectTransform:
   m_ObjectHideFlags: 0
@@ -427,7 +430,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 35364530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47, y: -86, z: 0}
+  m_LocalPosition: {x: -47, y: -84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1749542547}
@@ -709,7 +712,6 @@ MonoBehaviour:
   username: {fileID: 1749542548}
   password: {fileID: 697820541}
   loginObjectUI: {fileID: 35364530}
-  arObjects: {fileID: 1320569439}
   userInfoUI: {fileID: 1883088869}
 --- !u!1 &441604101 stripped
 GameObject:
@@ -844,7 +846,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 644027615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -847, y: 283, z: 0}
+  m_LocalPosition: {x: -847, y: 281, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1288935327}
@@ -2091,7 +2093,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1288935323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 857, y: 333, z: 0}
+  m_LocalPosition: {x: 857, y: 331, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1638229286}
@@ -2122,7 +2124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1320569440
 Transform:
   m_ObjectHideFlags: 0
@@ -2315,7 +2317,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!114 &1345176588
 MonoBehaviour:
@@ -2637,7 +2639,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!114 &1473081456
 MonoBehaviour:
@@ -3120,7 +3122,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!114 &1631366034
 MonoBehaviour:
@@ -3163,7 +3165,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1638229285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -847, y: 323, z: 0}
+  m_LocalPosition: {x: -847, y: 321, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1288935327}
@@ -3371,7 +3373,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1763783942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 333, z: 0}
+  m_LocalPosition: {x: 0, y: 331, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1288935327}
@@ -3435,7 +3437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1883088870
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3443,7 +3445,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1883088869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 857, y: 333, z: 0}
+  m_LocalPosition: {x: 857, y: 331, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 896179300}
