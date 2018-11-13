@@ -13,14 +13,20 @@ public class PlayerController : MonoBehaviour {
 	public GameObject cube;
 	public GameObject cylinder;
 	public GameObject capsule;
+	public Text titleText;
+	public Text hintText;
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
+		titleText.text = "Object Instantiation topic";
+		hintText.text = "Hint: Pickup the object!";
+		titleText.gameObject.SetActive (true);
+		hintText.gameObject.SetActive (true);
 	}
 	
 	void FixedUpdate() {
-		mobileMovement();
-		//keyboardMovement();
+		// mobileMovement();
+		keyboardMovement();
 	}
 
 	void keyboardMovement() {
@@ -58,24 +64,28 @@ public class PlayerController : MonoBehaviour {
 			case "Stage1PickUp":
 				other.gameObject.SetActive (false);
 				stage1.SetActive (true);
+				hintText.text = "Hint: Choose a shape";
 				break;
 			case "CubeObject":
 				stage2PickUp.SetActive (true);
 				capsule.SetActive (false);
 				cylinder.SetActive (false);
 				gameObject.SetActive (false);
+				hintText.text = "Hint: Pickup the object!";
 				break;
 			case "CylinderObject":
 				stage2PickUp.SetActive (true);
 				cube.SetActive (false);
 				capsule.SetActive (false);
 				gameObject.SetActive (false);
+				hintText.text = "Hint: Pickup the object!";
 				break;
 			case "CapsuleObject":
 				stage2PickUp.SetActive (true);
 				cube.SetActive (false);
 				cylinder.SetActive (false);
 				gameObject.SetActive (false);
+				hintText.text = "Hint: Pickup the object!";
 				break;
 		}
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CubeController : MonoBehaviour {
 
@@ -9,16 +10,21 @@ public class CubeController : MonoBehaviour {
 	public float speed;
 	public GameObject player;
 	private Rigidbody rb;
+	public Text titleText;
+	public Text hintText;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		titleText.text = "Setter method topic";
+		titleText.gameObject.SetActive (true);
+		hintText.gameObject.SetActive (true);
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		//keyboardMovement();
-		mobileMovement();
+		keyboardMovement();
+		// mobileMovement();
 	}
 
 	void mobileMovement() {
@@ -72,18 +78,22 @@ public class CubeController : MonoBehaviour {
 		case "Stage2PickUp":
 			other.gameObject.SetActive (false);
 			stage2.gameObject.SetActive (true);
+			hintText.text = "Hint: Choose a color for setter";
 			break;
 		case "GreenColor":
 			stage2.gameObject.SetActive (false);
 			ChangeColor ("Green");
+			hintText.text = "Congratulations! Level 1 complete.";
 			break;
 		case "RedColor":
 			stage2.gameObject.SetActive (false);
 			ChangeColor ("Red");
+			hintText.text = "Congratulations! Level 1 complete.";
 			break;
 		case "YellowColor":
 			stage2.gameObject.SetActive (false);
 			ChangeColor ("Yellow");
+			hintText.text = "Congratulations! Level 1 complete.";
 			break;
 		}
 	}
