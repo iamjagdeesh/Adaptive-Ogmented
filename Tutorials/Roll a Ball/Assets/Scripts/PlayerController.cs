@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 	private Rigidbody rb;
 	public GameObject stage1;
+	public GameObject stage2;
 	public GameObject stage2PickUp;
 	public GameObject stage1CorrectOption;
 	public GameObject stage1IncorrectOption1;
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour {
 				hintText.text = "Hint: Pickup the object!";
 				break;
 			case "Stage1IncorrectOption1":
+			case "Stage2IncorrectOption1":
 				SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 				stage2PickUp.SetActive (true);
 				stage1CorrectOption.SetActive (false);
@@ -91,6 +93,7 @@ public class PlayerController : MonoBehaviour {
 				hintText.text = "Hint: Pickup the object!";
 				break;
 			case "Stage1IncorrectOption2":
+			case "Stage2IncorrectOption2":
 				SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 				stage2PickUp.SetActive (true);
 				stage1CorrectOption.SetActive (false);
@@ -98,17 +101,17 @@ public class PlayerController : MonoBehaviour {
 				gameObject.SetActive (false);
 				hintText.text = "Hint: Pickup the object!";
 				break;
-		case "Task3CorrectOption1":
-			stage2PickUp.SetActive (true);
-			stage1CorrectOption.SetActive (false);
-			stage1IncorrectOption1.SetActive (false);
-			stage1IncorrectOption2.SetActive (false);
-			break;
-		case "Stage2PickUp":
-			
-			break;
-		case "Task3CorrectOption2":
-
+			case "Task3CorrectOption1":
+				stage2PickUp.SetActive (true);
+				stage1.SetActive (false);
+				break;
+			case "Stage2PickUp":
+				stage2PickUp.SetActive (false);
+				stage2.SetActive (true);
+				break;
+			case "Task3CorrectOption2":
+				stage2.SetActive (false);
+				break;
 		}
 	}
 
