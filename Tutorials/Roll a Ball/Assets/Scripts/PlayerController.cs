@@ -2,25 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
 	public float speed;
 	private Rigidbody rb;
 	public GameObject stage1;
-	public GameObject stage2;
 	public GameObject stage2PickUp;
-	public GameObject cube;
-	public GameObject cylinder;
-	public GameObject capsule;
+	public GameObject stage1CorrectOption;
+	public GameObject stage1IncorrectOption1;
+	public GameObject stage1IncorrectOption2;
 	public Text titleText;
 	public Text hintText;
-
-	//hack
 	public Text userName;
 	public Text userID;
 	public Text performance;
-
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
@@ -28,9 +25,9 @@ public class PlayerController : MonoBehaviour {
 		hintText.text = "Hint: Pickup the object!";
 		titleText.gameObject.SetActive (true);
 		hintText.gameObject.SetActive (true);
+		StaticGameInfo.currentTask = 1;
 
 		//hack
-		Debug.Log("Static name: " + StaticGameInfo.userName);
 		userName.text = StaticGameInfo.userName;
 		userID.text = StaticGameInfo.userID;
 		performance.text = StaticGameInfo.performance;
@@ -78,41 +75,41 @@ public class PlayerController : MonoBehaviour {
 				stage1.SetActive (true);
 				hintText.text = "Hint: Choose a shape";
 				break;
-			case "CubeObject":
+			case "Stage1CorrectOption":
 				stage2PickUp.SetActive (true);
-				capsule.SetActive (false);
-				cylinder.SetActive (false);
+				stage1IncorrectOption1.SetActive (false);
+				stage1IncorrectOption2.SetActive (false);
 				gameObject.SetActive (false);
 				hintText.text = "Hint: Pickup the object!";
 				break;
-			case "CylinderObject":
+			case "Stage1IncorrectOption1":
+				SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 				stage2PickUp.SetActive (true);
-				cube.SetActive (false);
-				capsule.SetActive (false);
+				stage1CorrectOption.SetActive (false);
+				stage1IncorrectOption2.SetActive (false);
 				gameObject.SetActive (false);
 				hintText.text = "Hint: Pickup the object!";
 				break;
-			case "CapsuleObject":
+			case "Stage1IncorrectOption2":
+				SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 				stage2PickUp.SetActive (true);
-				cube.SetActive (false);
-				cylinder.SetActive (false);
+				stage1CorrectOption.SetActive (false);
+				stage1IncorrectOption1.SetActive (false);
 				gameObject.SetActive (false);
 				hintText.text = "Hint: Pickup the object!";
 				break;
+		case "Task3CorrectOption1":
+			stage2PickUp.SetActive (true);
+			stage1CorrectOption.SetActive (false);
+			stage1IncorrectOption1.SetActive (false);
+			stage1IncorrectOption2.SetActive (false);
+			break;
+		case "Stage2PickUp":
+			
+			break;
+		case "Task3CorrectOption2":
+
 		}
-
-
 	}
 
-	void ChangeColor() {
-		GameObject player = rb.gameObject;
-		Color whateverColor = new Color(0.6f,0.5f,0.5f,1);
-
-		MeshRenderer gameObjectRenderer = player.GetComponent<MeshRenderer>();
-
-		Material newMaterial = new Material(Shader.Find("Standard"));
-
-		newMaterial.color = whateverColor;
-		gameObjectRenderer.material = newMaterial ;
-	}
 }

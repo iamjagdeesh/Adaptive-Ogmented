@@ -17,16 +17,12 @@ public class LoginScript : MonoBehaviour {
 	public GameObject userInfoUI;
 
 	public void Login () {
-		Debug.Log ("Login button clicked");
-		Debug.Log (username.text);
-		Debug.Log (password.text);
 		if (username.text.Equals ("jags") && password.text.Equals ("pwd")) {
 			Debug.Log ("Login Successful!");
 		}
 		loginObjectUI.SetActive (false);
-		//arObjects.SetActive (true);
 		DisplayUserInfoUI (username.text);
-		SceneManager.LoadScene ("MiniGame");
+		SceneManager.LoadScene ("Task 2");
 
 	}
 
