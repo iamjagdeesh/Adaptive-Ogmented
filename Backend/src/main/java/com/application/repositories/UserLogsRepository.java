@@ -11,4 +11,14 @@ public interface UserLogsRepository extends JpaRepository<UserLogs, Integer> {
 
     List<UserLogs> findByUserId(String userId);
 
+    UserLogs findTop1ByUserIdAndIsSuccessOrderByTimestampDesc(String userId, String isSuccess);
+
+    List<UserLogs> findByUserIdAndTaskNumberAndIsSuccess(String userId, Integer taskNumber, String isSuccess);
+
+    List<UserLogs> findByTaskNumberAndIsSuccess(Integer taskNumber, String isSuccess);
+
+    UserLogs findTop1ByUserIdAndTaskNumberAndIsSuccessOrderByTimestampDesc(String userId, Integer taskNumber, String isSuccess);
+
+    UserLogs findTop1ByUserIdAndTaskNumberOrderByTimestampDesc(String userId, Integer taskNumber);
+
 }

@@ -53,4 +53,15 @@ public class UserController {
         return userService.getUserLogs(userId);
     }
 
+    @RequestMapping(value = "/getGameSettingsForUser", method = RequestMethod.GET)
+    public String getGameSettingsForUser(@RequestParam("userId") String userId) {
+        return userService.getGameSettingsForUser(userId).toString();
+    }
+
+    @RequestMapping(value = "/stats/getEndOfSceneStats", method = RequestMethod.GET)
+    public String getEndOfSceneStats(@RequestParam("userId") String userId,
+                                     @RequestParam("taskNumber") Integer taskNumber) {
+        return userService.getEndOfSceneStats(userId, taskNumber).toString();
+    }
+
 }
