@@ -22,16 +22,16 @@ public class PlayerController : MonoBehaviour {
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
-		titleText.text = "Object Instantiation topic";
-		hintText.text = "Hint: Pickup the object!";
+		//titleText.text = "Object Instantiation topic";
+		//hintText.text = "Hint: Pickup the object!";
 		titleText.gameObject.SetActive (true);
-		hintText.gameObject.SetActive (true);
+		//hintText.gameObject.SetActive (true);
 		StaticGameInfo.currentTask = 1;
 
 		//hack
 		userName.text = StaticGameInfo.userName;
 		userID.text = StaticGameInfo.userID;
-		performance.text = StaticGameInfo.performance;
+		//performance.text = StaticGameInfo.performance;
 	}
 	
 	void FixedUpdate() {
@@ -70,18 +70,26 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
+		other.isTrigger = false;
+		string activeSceneName = SceneManager.GetActiveScene ().name;
 		switch (other.gameObject.name) {
 			case "Stage1PickUp":
 				other.gameObject.SetActive (false);
 				stage1.SetActive (true);
-				hintText.text = "Hint: Choose a shape";
+				if (activeSceneName.Equals (StaticGameInfo.TASK_1)) {
+					SetHint (StaticGameInfo.HINT_T1_AFTER_S1_PICKUP);
+				} else if (activeSceneName.Equals (StaticGameInfo.TASK_2)) {
+					SetHint (StaticGameInfo.HINT_T2_AFTER_S1_PICKUP);
+				} else if (activeSceneName.Equals (StaticGameInfo.TASK_3)) {
+					SetHint (StaticGameInfo.HINT_T3_AFTER_S1_PICKUP);
+				}
 				break;
 			case "Stage1CorrectOption":
 				stage2PickUp.SetActive (true);
 				stage1IncorrectOption1.SetActive (false);
 				stage1IncorrectOption2.SetActive (false);
 				gameObject.SetActive (false);
-				hintText.text = "Hint: Pickup the object!";
+				SetHint (StaticGameInfo.DEFAULT_HINT);
 				break;
 			case "Stage1IncorrectOption1":
 			case "Stage2IncorrectOption1":
@@ -90,7 +98,7 @@ public class PlayerController : MonoBehaviour {
 				stage1CorrectOption.SetActive (false);
 				stage1IncorrectOption2.SetActive (false);
 				gameObject.SetActive (false);
-				hintText.text = "Hint: Pickup the object!";
+				SetHint (StaticGameInfo.DEFAULT_HINT);
 				break;
 			case "Stage1IncorrectOption2":
 			case "Stage2IncorrectOption2":
@@ -99,20 +107,30 @@ public class PlayerController : MonoBehaviour {
 				stage1CorrectOption.SetActive (false);
 				stage1IncorrectOption1.SetActive (false);
 				gameObject.SetActive (false);
-				hintText.text = "Hint: Pickup the object!";
+				SetHint (StaticGameInfo.DEFAULT_HINT);
 				break;
 			case "Task3CorrectOption1":
 				stage2PickUp.SetActive (true);
 				stage1.SetActive (false);
+				SetHint (StaticGameInfo.DEFAULT_HINT);
 				break;
 			case "Stage2PickUp":
 				stage2PickUp.SetActive (false);
 				stage2.SetActive (true);
+				if (activeSceneName.Equals (StaticGameInfo.TASK_3)) {
+					SetHint (StaticGameInfo.HINT_T3_AFTER_S2_PICKUP);
+				}
 				break;
 			case "Task3CorrectOption2":
 				stage2.SetActive (false);
+				SetHint (StaticGameInfo.LEVEL_COMPLETE);
 				break;
 		}
+	}
+
+	public void SetHint(string hintStr) {
+		hintText.text = hintStr;
+		StaticGameInfo.hint = hintStr;
 	}
 
 }
