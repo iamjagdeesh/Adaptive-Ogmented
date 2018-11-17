@@ -1,5 +1,6 @@
 package com.application.pojo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,8 +9,13 @@ import javax.persistence.Table;
 @Table(name = "USER_TBL")
 public class User {
     @Id
+    @Column(name = "USER_ID")
     private String userId;
+
+    @Column(name = "PASSWORD")
     private String password;
+
+    @Column(name = "LEVEL_OF_EXPERTISE")
     private Integer levelOfExpertise;
 
     public User() {

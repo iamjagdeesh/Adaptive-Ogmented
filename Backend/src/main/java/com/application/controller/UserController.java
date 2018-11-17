@@ -3,10 +3,7 @@ package com.application.controller;
 import com.application.pojo.User;
 import com.application.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -25,6 +22,18 @@ public class UserController {
                         @RequestParam String password,
                         @RequestParam Integer levelOfExpertise) {
         return userService.addUser(userId, password, levelOfExpertise);
+    }
+
+    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+    public User getUser(@PathVariable("userId") String userId) {
+        System.out.println(userId);
+        return userService.getUser(userId);
+    }
+
+    @RequestMapping(value = "/checkIfValidCredentials", method = RequestMethod.GET)
+    public Boolean checkIfValidCredentials(@RequestParam String userId,
+                                           @RequestParam String password) {
+        return userService.checkIfValidCredentials(userId, password);
     }
 
 }

@@ -18,4 +18,19 @@ public class UserService {
         return user;
     }
 
+    public User getUser(String userId) {
+        User user = userRepository.findByUserId(userId);
+
+        return user;
+    }
+
+    public Boolean checkIfValidCredentials(String userId, String password) {
+        User user = userRepository.findByUserIdAndPassword(userId, password);
+        if (user == null) {
+            return Boolean.FALSE;
+        } else {
+            return Boolean.TRUE;
+        }
+    }
+
 }
