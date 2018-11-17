@@ -1,9 +1,12 @@
 package com.application.controller;
 
 import com.application.pojo.User;
+import com.application.pojo.UserLogs;
 import com.application.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -26,7 +29,6 @@ public class UserController {
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public User getUser(@PathVariable("userId") String userId) {
-        System.out.println(userId);
         return userService.getUser(userId);
     }
 
@@ -34,6 +36,21 @@ public class UserController {
     public Boolean checkIfValidCredentials(@RequestParam String userId,
                                            @RequestParam String password) {
         return userService.checkIfValidCredentials(userId, password);
+    }
+
+    @RequestMapping(value = "/logs/addUserLog", method = RequestMethod.POST)
+    public UserLogs addUserLog(@RequestParam Integer speed,
+                               @RequestParam Integer numberOfWallCollisions,
+                               @RequestParam Integer taskNumber,
+                               @RequestParam String userId,
+                               @RequestParam Boolean isSuccess,
+                               @RequestParam Long timeTaken) {
+        return userService.addUserLog(speed, numberOfWallCollisions, taskNumber, userId, isSuccess, timeTaken);
+    }
+
+    @RequestMapping(value = "/logs/{userId}", method = RequestMethod.GET)
+    public List<UserLogs> getUserLogs(@PathVariable("userId") String userId) {
+        return userService.getUserLogs(userId);
     }
 
 }
