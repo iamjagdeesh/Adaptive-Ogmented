@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44659412, g: 0.49642998, b: 0.57482463, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465794, g: 0.4964137, b: 0.5748175, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1049,8 +1049,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 1
 --- !u!1 &722073266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,7 +1184,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 874714758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 802f7d6135bb1490bb9d320b84bddbb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 917a29f55e58944e3acc4ccdec0608b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   userInfoUI: {fileID: 1883088869}
@@ -1681,8 +1681,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 1
 --- !u!23 &1166502272
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2858,7 +2858,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &1883088869
 GameObject:
