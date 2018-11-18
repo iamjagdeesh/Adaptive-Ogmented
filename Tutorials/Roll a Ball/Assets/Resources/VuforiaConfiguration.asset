@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
-    vuforiaLicenseKey: AXLzfAb/////AAABmUeJi6zknEaZnygJwLFnM74Vt4Q1tY/mELnIAKoVO+K85qLpTm3sdwHAv0jL4K1OExdsuIBTmznvWxIkLiFg40ERYxi1e9jzNQDkW+LJbwk2ZJK2vYwWy1rhy0GS9c+HDoQ+mdS5N4nxDpmaY2mUA/rPnV0JfZkhlSGcs8XSqkFbNXEpN5nOBMJe2KDegmFrx5vO7pNl+u1zESkNLbT8JDhJdT+mKBQYTgYb8X+dWiT9BXY7VNi9AKFOY8vIKpIlgjoyT3Nxm5Iq/0Ok0RM9kKmcg87trtm17TvtnTi7ObIab7XN+8y+MWRRnO4wzK8m2iVUYWnCIidWxm+6fUythRtTyk01ll5voV4iomBdebdq
+    vuforiaLicenseKey: AQoRv4T/////AAABmcq/0Spv+0IUu8MQKcDphEUGzQ/8P/jtapRkI4wmR0pBJ0iFMscixjo7jUhjTKtcicpIb8YmOeZ7uZtnb2ZFJ5vWGTUlpCQtMSJBt5wnUknnuM5KnCyOoUH2Dk7OYXi4NtudPZQp7UWBqNgeaN/sBHewtfYFccQMmwwiJkaTg3KvlN1Gt4c4wUGHFaNDsUCkyzboukEAFVzs1/t1lsLIofPu2+eTFINwYkVyRht+PSaFj8xZaTd6vKHh38e1SyhhFQrusqnpg3/brCl19w7eQ39nHyae6tWxgOcHemos69Vniohf5Z2M/h6s1qvbpslYisfsn+516CzpPb6hsozcdTpffe+WLomMIhcyM+Be+ERN
     ufoLicenseKey: QVd0YUkxbi8vLy8vQUFBQUtFV3VMMTFlUTBwc2tnNTRnZnhucE44YWc2ekwycW15QzI0dGUzWjg2V2NQNjJsRjZOT1JCMm45OVA4dXErajdHZHl3KzRCbGM2RkxzM1liOEcwdDVLRStzekh3UDZMZHNIdHZmRlRpWm1hQ21sSkFnLzIxZ3I2QStXazg0RVRJL2Vtb1k5cm1jTlhqdWFkdldwSmJ3ZFJUWTBick1JWURYWGVNeDl4MlJWcTdYdGpoNUVBTTV1cURscWJZZkJUWm1YRW1zZHUweWpUMDJnc0M1bFdTMkIzMWxGSHl3MGViY2p6YWdCVUdpMEhVSE1qL2hqMnZsYUFWTzBPSlcvNHk0VXdGWHIyMjJyT0VLZEZac01PODJnbWVOdGQycXNvK1JDVUVXMEJxQlM3SXVaWWpDS2JZZ0xONHZHb3dSTHpySjVIWjdEYW9FVm03L2ludFdxNnFWMGw5QnZOS1FYaEFqd2txK0xXQm5Vbis=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
@@ -60,11 +60,6 @@ MonoBehaviour:
       type: 0}
     matteShader: {fileID: 15310, guid: 0000000000000000f000000000000000, type: 0}
     videoBackgroundEnabled: 1
-  smartTerrainTracker:
-    autoInitTracker: 0
-    autoStartTracker: 0
-    autoInitBuilder: 0
-    sceneUnitsToMillimeter: 0
   deviceTracker:
     autoInitTracker: 0
     autoStartTracker: 0
@@ -73,6 +68,9 @@ MonoBehaviour:
     modelCorrectionMode: 0
     modelTransformEnabled: 0
     modelTransform: {x: 0, y: 0.1, z: -0.1}
+  smartTerrain:
+    autoInitTracker: 0
+    autoStartTracker: 0
   webcam:
     deviceNameSetInEditor: 
     flipHorizontally: 0

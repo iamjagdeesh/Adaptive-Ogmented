@@ -27,8 +27,8 @@ public class Stage1ObjectController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		keyboardMovement();
-		// mobileMovement();
+		//keyboardMovement();
+		 mobileMovement();
 	}
 
 	void mobileMovement() {
@@ -78,6 +78,7 @@ public class Stage1ObjectController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
+		other.isTrigger = false;
 		switch (other.gameObject.name) {
 		case "Stage2PickUp":
 			other.gameObject.SetActive (false);

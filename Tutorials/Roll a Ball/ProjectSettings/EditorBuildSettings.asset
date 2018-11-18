@@ -8,15 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoginScene.unity
     guid: 2c4753d062e7049b7856cbeed8000473
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Task 1.unity
     guid: 28e1732b0d00c447cb162f4d8b0a0296
   - enabled: 1
     path: Assets/Scenes/Task 2.unity
     guid: 4d99f898c5ad8454f9329a7cb771ea65
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Task 3.unity
     guid: c41e4517095164d34995fec4b6f7560e

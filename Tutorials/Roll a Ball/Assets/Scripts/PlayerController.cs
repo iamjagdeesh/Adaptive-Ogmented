@@ -35,8 +35,8 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		// mobileMovement();
-		keyboardMovement();
+		 mobileMovement();
+		// keyboardMovement();
 	}
 
 	void keyboardMovement() {
@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
+		other.isTrigger = false;
 		switch (other.gameObject.name) {
 			case "Stage1PickUp":
 				other.gameObject.SetActive (false);
