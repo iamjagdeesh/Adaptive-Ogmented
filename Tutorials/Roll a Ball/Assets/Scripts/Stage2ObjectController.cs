@@ -14,9 +14,9 @@ public class Stage2ObjectController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
-		titleText.text = "Setter method topic";
-		titleText.gameObject.SetActive (true);
-		hintText.gameObject.SetActive (true);
+//		titleText.text = "Setter method topic";
+//		titleText.gameObject.SetActive (true);
+//		hintText.gameObject.SetActive (true);
 	}
 	
 	// Update is called once per frame

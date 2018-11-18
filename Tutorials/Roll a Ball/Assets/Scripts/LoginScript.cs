@@ -10,6 +10,8 @@ public class LoginScript : MonoBehaviour {
 
 	public InputField password;
 
+	public Dropdown levelOfExpertise;
+
 	public GameObject loginObjectUI;
 
 	//public GameObject arObjects;
@@ -22,8 +24,9 @@ public class LoginScript : MonoBehaviour {
 		}
 		loginObjectUI.SetActive (false);
 		DisplayUserInfoUI (username.text);
-		SceneManager.LoadScene ("Task 2");
-
+		populateStaticInfo ();
+		Debug.Log ("Chosen scene: "+ levelOfExpertise.options [levelOfExpertise.value].text);
+		SceneManager.LoadScene (levelOfExpertise.options[levelOfExpertise.value].text);
 	}
 
 	public void DisplayUserInfoUI (string user) {
@@ -40,6 +43,6 @@ public class LoginScript : MonoBehaviour {
 	public void populateStaticInfo () {
 		StaticGameInfo.userName = "Jagdeesh Basavaraju";
 		StaticGameInfo.userID = username.text;
-		StaticGameInfo.performance = "Doing OK!";
 	}
+
 }

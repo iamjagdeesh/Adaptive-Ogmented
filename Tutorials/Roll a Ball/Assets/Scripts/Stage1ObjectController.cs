@@ -20,9 +20,9 @@ public class Stage1ObjectController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
-		titleText.text = "Setter method topic";
-		titleText.gameObject.SetActive (true);
-		hintText.gameObject.SetActive (true);
+//		titleText.text = "Setter method topic";
+//		titleText.gameObject.SetActive (true);
+//		hintText.gameObject.SetActive (true);
 	}
 	
 	// Update is called once per frame
@@ -78,27 +78,37 @@ public class Stage1ObjectController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
+<<<<<<< HEAD
 		other.isTrigger = false;
+=======
+		string activeSceneName = SceneManager.GetActiveScene ().name;
+>>>>>>> 9d7cff4e126d098161aac432d457be17c80ad096
 		switch (other.gameObject.name) {
 		case "Stage2PickUp":
 			other.gameObject.SetActive (false);
 			stage2.gameObject.SetActive (true);
-			hintText.text = "Hint: Choose a color for setter";
+			if (activeSceneName.Equals (StaticGameInfo.TASK_1)) {
+				SetHint (StaticGameInfo.HINT_T1_AFTER_S2_PICKUP);
+			} else if (activeSceneName.Equals (StaticGameInfo.TASK_2)) {
+				SetHint (StaticGameInfo.HINT_T2_AFTER_S2_PICKUP);
+			} else if (activeSceneName.Equals (StaticGameInfo.TASK_3)) {
+				SetHint (StaticGameInfo.HINT_T3_AFTER_S2_PICKUP);
+			}
 			break;
 		case "Stage2CorrectOption":
 			stage2IncorrectObject1.gameObject.SetActive (false);
 			stage2IncorrectObject2.gameObject.SetActive (false);
 			gameObject.SetActive (false);
 			ChangeColor ("Green");
-			hintText.text = "Congratulations! Level 1 complete.";
+			SetHint (StaticGameInfo.LEVEL_COMPLETE);
 			break;
 		case "Stage2IncorrectOption1":
-			SceneManager.LoadScene (SceneManager.GetActiveScene().name);
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 			stage2CorrectObject.gameObject.SetActive (false);
 			stage2IncorrectObject2.gameObject.SetActive (false);
 			gameObject.SetActive (false);
 			ChangeColor ("Red");
-			hintText.text = "Congratulations! Level 1 complete.";
+			SetHint (StaticGameInfo.DEFAULT_HINT);
 			break;
 		case "Stage2IncorrectOption2":
 			SceneManager.LoadScene (SceneManager.GetActiveScene().name);
@@ -106,7 +116,7 @@ public class Stage1ObjectController : MonoBehaviour {
 			stage2CorrectObject.gameObject.SetActive (false);
 			ChangeColor ("Yellow");
 			gameObject.SetActive (false);
-			hintText.text = "Congratulations! Level 1 complete.";
+			SetHint (StaticGameInfo.DEFAULT_HINT);
 			break;
 		}
 	}
@@ -131,6 +141,11 @@ public class Stage1ObjectController : MonoBehaviour {
 			MeshRenderer gameObjectRenderer = player.GetComponent<MeshRenderer>();
 			gameObjectRenderer.material = newMaterial ;
 		}
+	}
+
+	public void SetHint(string hintStr) {
+		hintText.text = hintStr;
+		StaticGameInfo.hint = hintStr;
 	}
 
 }
