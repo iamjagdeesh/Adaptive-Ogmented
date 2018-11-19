@@ -474,7 +474,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 396833635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 802f7d6135bb1490bb9d320b84bddbb1, type: 3}
+  m_Script: {fileID: 11500000, guid: fe96ff7de93ce49fca5dc5ef427bffd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   userInfoUI: {fileID: 1883088869}
@@ -1279,7 +1279,6 @@ MonoBehaviour:
   hintText: {fileID: 644027617}
   userName: {fileID: 896179301}
   userID: {fileID: 1380076225}
-  performance: {fileID: 0}
 --- !u!1 &894199274
 GameObject:
   m_ObjectHideFlags: 0

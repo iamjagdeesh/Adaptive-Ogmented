@@ -212,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   stage1: {fileID: 1597076709}
-  stage2: {fileID: 0}
+  stage2: {fileID: 722073266}
   stage2PickUp: {fileID: 441604101}
   stage1CorrectOption: {fileID: 1631366028}
   stage1IncorrectOption1: {fileID: 1345176582}
@@ -220,8 +220,7 @@ MonoBehaviour:
   titleText: {fileID: 1763783944}
   hintText: {fileID: 644027617}
   userName: {fileID: 896179301}
-  userID: {fileID: 1380076225}
-  performance: {fileID: 0}
+  userID: {fileID: 0}
 --- !u!54 &1796754
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -671,7 +670,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 396833635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 802f7d6135bb1490bb9d320b84bddbb1, type: 3}
+  m_Script: {fileID: 11500000, guid: fe96ff7de93ce49fca5dc5ef427bffd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   userInfoUI: {fileID: 1883088869}
@@ -1434,7 +1433,7 @@ MonoBehaviour:
         m_MethodName: ShowObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 644027615}
+          m_ObjectArgument: {fileID: 1320569439}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1445,7 +1444,7 @@ MonoBehaviour:
         m_MethodName: ShowObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1320569439}
+          m_ObjectArgument: {fileID: 644027615}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1907,7 +1906,6 @@ GameObject:
   - component: {fileID: 1345176586}
   - component: {fileID: 1345176584}
   - component: {fileID: 1345176587}
-  - component: {fileID: 1345176588}
   - component: {fileID: 1345176585}
   m_Layer: 0
   m_Name: Stage1IncorrectOption1
@@ -1997,17 +1995,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 36
   m_CollisionDetection: 0
---- !u!114 &1345176588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1345176582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e2a96ee6a951478584f0d5dd382aff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1378982600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,80 +2079,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1378982600}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1380076223
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1380076224}
-  - component: {fileID: 1380076226}
-  - component: {fileID: 1380076225}
-  m_Layer: 5
-  m_Name: UserID
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1380076224
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1380076223}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children: []
-  m_Father: {fileID: 1883088870}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -112, y: -42}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1380076225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1380076223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: DefaultID
---- !u!222 &1380076226
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1380076223}
 --- !u!1001 &1458957520
 Prefab:
   m_ObjectHideFlags: 0
@@ -2223,7 +2136,6 @@ GameObject:
   - component: {fileID: 1473081454}
   - component: {fileID: 1473081452}
   - component: {fileID: 1473081455}
-  - component: {fileID: 1473081456}
   - component: {fileID: 1473081453}
   m_Layer: 0
   m_Name: Stage1IncorrectOption2
@@ -2313,17 +2225,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 36
   m_CollisionDetection: 0
---- !u!114 &1473081456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1473081450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0217d3043df524fe5bac2684b18bd1e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1475350834
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,7 +2888,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 896179300}
-  - {fileID: 1380076224}
   m_Father: {fileID: 1288935327}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3038,7 +2938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mWorldCenterMode: 1
-  mWorldCenter: {fileID: 0}
+  mWorldCenter: {fileID: 904173780}
 --- !u!81 &2008616577
 AudioListener:
   m_ObjectHideFlags: 0

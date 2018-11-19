@@ -17,8 +17,6 @@ public class Task4PlayerController : MonoBehaviour {
 	public Text titleText;
 	public Text hintText;
 	public Text userName;
-	public Text userID;
-	public Text performance;
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
@@ -29,8 +27,6 @@ public class Task4PlayerController : MonoBehaviour {
 
 		//hack
 		userName.text = StaticGameInfo.userName;
-		userID.text = StaticGameInfo.userID;
-		performance.text = StaticGameInfo.performance;
 	}
 
 	void FixedUpdate() {

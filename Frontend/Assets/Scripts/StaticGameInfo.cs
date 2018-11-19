@@ -4,8 +4,6 @@ using UnityEngine;
 
 public static class StaticGameInfo {
 	public static string userName;
-	public static string userID;
-	public static string performance;
 	public static int currentTask;
 
 	public const string TASK_1 = "Task 1";

@@ -6,43 +6,46 @@ using UnityEngine.SceneManagement;
 
 public class LoginScript : MonoBehaviour {
 
-	public InputField username;
-
-	public InputField password;
-
-	public Dropdown levelOfExpertise;
-
 	public GameObject loginObjectUI;
 
-	//public GameObject arObjects;
+	public GameObject registerObjectUI;
 
 	public GameObject userInfoUI;
 
 	public void Login () {
-		if (username.text.Equals ("jags") && password.text.Equals ("pwd")) {
+		string userName = loginObjectUI.transform.GetChild (0).GetComponent<InputField> ().text;
+		string password = loginObjectUI.transform.GetChild (1).GetComponent<InputField> ().text;
+		if (userName.Equals("jags") && password.Equals ("pwd")) {
 			Debug.Log ("Login Successful!");
+			loginObjectUI.SetActive (false);
+			DisplayUserInfoUI (userName);
+			populateStaticInfo (userName);
+			SceneManager.LoadScene ("Task 1");
 		}
-		loginObjectUI.SetActive (false);
-		DisplayUserInfoUI (username.text);
-		populateStaticInfo ();
-		Debug.Log ("Chosen scene: "+ levelOfExpertise.options [levelOfExpertise.value].text);
-		SceneManager.LoadScene (levelOfExpertise.options[levelOfExpertise.value].text);
 	}
 
-	public void DisplayUserInfoUI (string user) {
+	public void Register () {
+		string userName = registerObjectUI.transform.GetChild (0).GetComponent<InputField> ().text;
+		string password = registerObjectUI.transform.GetChild (1).GetComponent<InputField> ().text;
+		Dropdown levelOfExpertise = registerObjectUI.transform.GetChild (2).GetComponent<Dropdown> ();
+		if (userName.Equals("jags") && password.Equals ("pwd")) {
+			Debug.Log ("Register Successful!");
+			registerObjectUI.SetActive (false);
+			DisplayUserInfoUI (userName);
+			populateStaticInfo (userName);
+			SceneManager.LoadScene (levelOfExpertise.options[levelOfExpertise.value].text);
+		}
+	}
+
+	public void DisplayUserInfoUI (string userName) {
 		//Make a rest call here to fetch the details or send details from login()
 		userInfoUI.SetActive (true);
-		Text userName = userInfoUI.transform.GetChild (0).GetComponent<Text> ();
-		Text userID = userInfoUI.transform.GetChild (1).GetComponent<Text> ();
-		Text performance = userInfoUI.transform.GetChild (2).GetComponent<Text> ();
-		userName.text = "Jagdeesh Basavaraju";
-		userID.text = user;
-		performance.text = "Doing OK!";
+		Text userNameText = userInfoUI.transform.GetChild (0).GetComponent<Text> ();
+		userNameText.text = userName;
 	}
 
-	public void populateStaticInfo () {
-		StaticGameInfo.userName = "Jagdeesh Basavaraju";
-		StaticGameInfo.userID = username.text;
+	public void populateStaticInfo (string userName) {
+		StaticGameInfo.userName = userName;
 	}
 
 }

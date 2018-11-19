@@ -17,21 +17,14 @@ public class PlayerController : MonoBehaviour {
 	public Text titleText;
 	public Text hintText;
 	public Text userName;
-	public Text userID;
-	public Text performance;
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
-		//titleText.text = "Object Instantiation topic";
-		//hintText.text = "Hint: Pickup the object!";
 		titleText.gameObject.SetActive (true);
-		//hintText.gameObject.SetActive (true);
 		StaticGameInfo.currentTask = 1;
 
 		//hack
 		userName.text = StaticGameInfo.userName;
-		userID.text = StaticGameInfo.userID;
-		//performance.text = StaticGameInfo.performance;
 	}
 	
 	void FixedUpdate() {
