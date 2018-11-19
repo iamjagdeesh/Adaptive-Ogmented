@@ -1,16 +1,25 @@
 package com.application.controller;
 
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.application.pojo.User;
 import com.application.pojo.UserLogs;
 import com.application.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
@@ -35,6 +44,7 @@ public class UserController {
     @RequestMapping(value = "/checkIfValidCredentials", method = RequestMethod.GET)
     public Boolean checkIfValidCredentials(@RequestParam String userId,
                                            @RequestParam String password) {
+    	LOGGER.info("checking if " + userId + " is a valid user!");
         return userService.checkIfValidCredentials(userId, password);
     }
 

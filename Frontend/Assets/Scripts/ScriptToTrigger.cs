@@ -1,8 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 
 public class ScriptToTrigger : MonoBehaviour {
 
@@ -39,4 +45,5 @@ public class ScriptToTrigger : MonoBehaviour {
 			break;
 		}
 	}
+
 }

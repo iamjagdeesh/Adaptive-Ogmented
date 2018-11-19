@@ -8,6 +8,7 @@ public class Task4PlayerController : MonoBehaviour {
 
 	public float speed;
 	private Rigidbody rb;
+	private int noOfAreasCalculated = 0;
 	public GameObject cube;
 	public GameObject capsule;
 	public GameObject cylinder;
@@ -20,8 +21,6 @@ public class Task4PlayerController : MonoBehaviour {
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
-		titleText.text = "Object Instantiation topic";
-		hintText.text = "Hint: Pickup the object!";
 		titleText.gameObject.SetActive (true);
 		hintText.gameObject.SetActive (true);
 
@@ -71,21 +70,37 @@ public class Task4PlayerController : MonoBehaviour {
 				cube.gameObject.SetActive (true);
 				cylinder.gameObject.SetActive (true);
 				capsule.gameObject.SetActive (true);
-				hintText.text = "Hint: Choose a shape";
+				hintText.text = StaticGameInfo.HINT_T4_AFTER_S1_PICKUP;
 				break;
 			case "Cube":
 				other.gameObject.SetActive (false);
 				cubeArea.gameObject.SetActive (true);
+				noOfAreasCalculated++;
+				if (noOfAreasCalculated >= 3) {
+					gameEndThings ();
+				}
 				break;
 			case "Cylinder":
 				other.gameObject.SetActive (false);
 				cylinderArea.gameObject.SetActive (true);
+				noOfAreasCalculated++;
+				if (noOfAreasCalculated >= 3) {
+					gameEndThings ();
+				}
 				break;
 			case "Capsule":
 				other.gameObject.SetActive (false);
 				capsuleArea.gameObject.SetActive (true);
+				noOfAreasCalculated++;
+				if (noOfAreasCalculated >= 3) {
+					gameEndThings ();
+				}
 				break;
 		}
+	}
+
+	void gameEndThings () {
+		hintText.text = StaticGameInfo.LEVEL_COMPLETE;
 	}
 
 }
