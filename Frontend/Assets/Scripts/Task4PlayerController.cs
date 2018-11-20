@@ -18,6 +18,8 @@ public class Task4PlayerController : MonoBehaviour {
 	public Text titleText;
 	public Text hintText;
 	public Text userName;
+	public GameObject exitObjects;
+	public GameObject arObjects;
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
@@ -26,6 +28,7 @@ public class Task4PlayerController : MonoBehaviour {
 
 		//hack
 		userName.text = StaticGameInfo.userName;
+		speed = StaticGameInfo.speed;
 	}
 
 	void FixedUpdate() {
@@ -101,6 +104,7 @@ public class Task4PlayerController : MonoBehaviour {
 
 	void gameEndThings () {
 		hintText.text = StaticGameInfo.LEVEL_COMPLETE;
+		StaticGameInfo.EndGame (true, exitObjects, arObjects);
 	}
 
 }

@@ -1,32 +1,32 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Net;
+//using System.Net.Http;
+//using System.Net.Http.Headers;
+//using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class ScriptToTrigger : MonoBehaviour {
 
 	public GameObject userInfoUI;
 
 	void Start() {
-		Debug.Log ("Script to Trigger called!");
+		UnityEngine.Debug.Log ("Script to Trigger called!");
 		DisplayUserInfoUI ();
 	}
 
 	public void ShowObject(GameObject gameObjectArg) {
-		Debug.Log ("Showing GO: " + gameObjectArg.name);
+		//Debug.Log ("Showing GO: " + gameObjectArg.name);
 		gameObjectArg.SetActive (true);
 		UpdateSomething (gameObjectArg);
 	}
 
 	public void HideObject(GameObject gameObjectArg) {
-		Debug.Log ("Hiding GO: " + gameObjectArg.name);
+		//Debug.Log ("Hiding GO: " + gameObjectArg.name);
 		gameObjectArg.SetActive (false);
 	}
 
@@ -44,6 +44,28 @@ public class ScriptToTrigger : MonoBehaviour {
 			hintText.text = StaticGameInfo.hint;
 			break;
 		}
+	}
+
+	public void StartTimer() {
+		StaticGameInfo.stopWatch = new Stopwatch ();
+		StaticGameInfo.stopWatch.Restart ();
+		UnityEngine.Debug.Log ("Stopwatch started!");
+	}
+
+	public void RestartScene() {
+		StaticGameInfo.complete = false;
+		StaticGameInfo.hint = StaticGameInfo.DEFAULT_HINT;
+		SceneManager.LoadScene (StaticGameInfo.currentScene);
+	}
+
+	public void StartNextScene() {
+		int nextTask = StaticGameInfo.currentTask + 1;
+		string nextScene = "Task " + nextTask;
+		StaticGameInfo.currentTask = nextTask;
+		StaticGameInfo.currentScene = nextScene;
+		StaticGameInfo.complete = false;
+		StaticGameInfo.hint = StaticGameInfo.DEFAULT_HINT;
+		SceneManager.LoadScene (nextScene);
 	}
 
 }

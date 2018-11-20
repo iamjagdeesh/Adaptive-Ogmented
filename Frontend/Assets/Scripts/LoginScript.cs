@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Web.Script.Serialization;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,7 +29,9 @@ public class LoginScript : MonoBehaviour {
 			loginObjectUI.SetActive (false);
 			DisplayUserInfoUI (userName);
 			populateStaticInfo (userName);
-			SceneManager.LoadScene ("Task 1");
+			await setGameSettings (userName);
+			Debug.Log ("Current Scene: "+StaticGameInfo.currentScene + ", currentTaskNumber: "+StaticGameInfo.currentTask);
+			SceneManager.LoadScene (StaticGameInfo.currentScene);
 		}
 	}
 
@@ -36,7 +39,6 @@ public class LoginScript : MonoBehaviour {
 		string userName = registerObjectUI.transform.GetChild (0).GetComponent<InputField> ().text;
 		string password = registerObjectUI.transform.GetChild (1).GetComponent<InputField> ().text;
 		Dropdown levelOfExpertise = registerObjectUI.transform.GetChild (2).GetComponent<Dropdown> ();
-		//string levelString = levelOfExpertise.options [levelOfExpertise.value].text;
 		int level = levelOfExpertise.value + 1;
 		Debug.Log ("Level" + level);
 		UserDomain userDomain = await addUser(userName, password, level);
@@ -77,6 +79,24 @@ public class LoginScript : MonoBehaviour {
 		return userDomain;
 	}
 
-
+	public async Task<bool> setGameSettings (string username) {
+		JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
+		string settingsJson = null;
+		bool status = false;
+		HttpResponseMessage response = await client.GetAsync(StaticGameInfo.url+"user/getGameSettingsForUser?userId="+username);
+		if (response.IsSuccessStatusCode)
+		{
+			settingsJson = await response.Content.ReadAsStringAsync();
+			dynamic dobj = jsonSerializer.Deserialize<dynamic>(settingsJson);
+			int speed = dobj ["speed"];
+			Debug.Log ("getGameSettingsApi: "+speed);
+			int taskNumber = dobj["taskNumber"];
+			StaticGameInfo.currentScene = "Task " + taskNumber;
+			StaticGameInfo.currentTask = taskNumber;
+			StaticGameInfo.speed = speed;
+			status = true;
+		}
+		return status;
+	}
 
 }

@@ -16,6 +16,8 @@ public class Stage1ObjectController : MonoBehaviour {
 	public GameObject stage2IncorrectObject2;
 	public Text titleText;
 	public Text hintText;
+	public GameObject exitObjects;
+	public GameObject arObjects;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,7 @@ public class Stage1ObjectController : MonoBehaviour {
 //		titleText.text = "Setter method topic";
 //		titleText.gameObject.SetActive (true);
 //		hintText.gameObject.SetActive (true);
+		speed = StaticGameInfo.speed;
 	}
 	
 	// Update is called once per frame
@@ -92,6 +95,8 @@ public class Stage1ObjectController : MonoBehaviour {
 			}
 			break;
 		case "Stage2CorrectOption":
+			Debug.Log ("Stage2Correct: Current Scene: "+StaticGameInfo.currentScene + ", currentTaskNumber: "+StaticGameInfo.currentTask);
+			StaticGameInfo.EndGame (true, exitObjects, arObjects);
 			stage2IncorrectObject1.gameObject.SetActive (false);
 			stage2IncorrectObject2.gameObject.SetActive (false);
 			gameObject.SetActive (false);
@@ -99,6 +104,7 @@ public class Stage1ObjectController : MonoBehaviour {
 			SetHint (StaticGameInfo.LEVEL_COMPLETE);
 			break;
 		case "Stage2IncorrectOption1":
+			StaticGameInfo.EndGame (false, exitObjects, arObjects);
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 			stage2CorrectObject.gameObject.SetActive (false);
 			stage2IncorrectObject2.gameObject.SetActive (false);
@@ -107,6 +113,7 @@ public class Stage1ObjectController : MonoBehaviour {
 			SetHint (StaticGameInfo.DEFAULT_HINT);
 			break;
 		case "Stage2IncorrectOption2":
+			StaticGameInfo.EndGame (false, exitObjects, arObjects);
 			SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 			stage2IncorrectObject1.gameObject.SetActive (false);
 			stage2CorrectObject.gameObject.SetActive (false);

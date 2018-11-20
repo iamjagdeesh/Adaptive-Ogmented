@@ -55,6 +55,7 @@ public class UserController {
                                @RequestParam String userId,
                                @RequestParam Boolean isSuccess,
                                @RequestParam Long timeTaken) {
+    	LOGGER.info("Adding logs after game end!");
         return userService.addUserLog(speed, numberOfWallCollisions, taskNumber, userId, isSuccess, timeTaken);
     }
 
@@ -65,12 +66,14 @@ public class UserController {
 
     @RequestMapping(value = "/getGameSettingsForUser", method = RequestMethod.GET)
     public String getGameSettingsForUser(@RequestParam("userId") String userId) {
+    	LOGGER.info("Getting game settings for "+userId);
         return userService.getGameSettingsForUser(userId).toString();
     }
 
     @RequestMapping(value = "/stats/getEndOfSceneStats", method = RequestMethod.GET)
     public String getEndOfSceneStats(@RequestParam("userId") String userId,
                                      @RequestParam("taskNumber") Integer taskNumber) {
+    	LOGGER.info("Getting end of scene stats for "+userId);
         return userService.getEndOfSceneStats(userId, taskNumber).toString();
     }
 

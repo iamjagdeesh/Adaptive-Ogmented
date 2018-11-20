@@ -17,6 +17,7 @@ public class Stage2ObjectController : MonoBehaviour {
 //		titleText.text = "Setter method topic";
 //		titleText.gameObject.SetActive (true);
 //		hintText.gameObject.SetActive (true);
+		speed = StaticGameInfo.speed;
 	}
 	
 	// Update is called once per frame

@@ -17,14 +17,16 @@ public class PlayerController : MonoBehaviour {
 	public Text titleText;
 	public Text hintText;
 	public Text userName;
+	public GameObject exitObjects;
+	public GameObject arObjects;
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
 		titleText.gameObject.SetActive (true);
-		StaticGameInfo.currentTask = 1;
 
 		//hack
 		userName.text = StaticGameInfo.userName;
+		speed = StaticGameInfo.speed;
 	}
 	
 	void FixedUpdate() {
@@ -86,6 +88,7 @@ public class PlayerController : MonoBehaviour {
 				break;
 			case "Stage1IncorrectOption1":
 			case "Stage2IncorrectOption1":
+				StaticGameInfo.EndGame (false, exitObjects, arObjects);
 				SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 				stage2PickUp.SetActive (true);
 				stage1CorrectOption.SetActive (false);
@@ -95,6 +98,7 @@ public class PlayerController : MonoBehaviour {
 				break;
 			case "Stage1IncorrectOption2":
 			case "Stage2IncorrectOption2":
+				StaticGameInfo.EndGame (false, exitObjects, arObjects);
 				SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 				stage2PickUp.SetActive (true);
 				stage1CorrectOption.SetActive (false);
@@ -115,6 +119,7 @@ public class PlayerController : MonoBehaviour {
 				}
 				break;
 			case "Task3CorrectOption2":
+				StaticGameInfo.EndGame (true, exitObjects, arObjects);
 				stage2.SetActive (false);
 				SetHint (StaticGameInfo.LEVEL_COMPLETE);
 				break;
