@@ -117,21 +117,21 @@ public class Stage1ObjectController : MonoBehaviour {
 			break;
 		case "Stage2IncorrectOption1":
 			StaticGameInfo.EndGame (false, exitObjects, arObjects);
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
-			stage2CorrectObject.gameObject.SetActive (false);
-			stage2IncorrectObject2.gameObject.SetActive (false);
-			gameObject.SetActive (false);
-			ChangeColor ("Red");
-			SetHint (StaticGameInfo.DEFAULT_HINT);
+//			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+//			stage2CorrectObject.gameObject.SetActive (false);
+//			stage2IncorrectObject2.gameObject.SetActive (false);
+//			gameObject.SetActive (false);
+//			ChangeColor ("Red");
+//			SetHint (StaticGameInfo.DEFAULT_HINT);
 			break;
 		case "Stage2IncorrectOption2":
 			StaticGameInfo.EndGame (false, exitObjects, arObjects);
-			SceneManager.LoadScene (SceneManager.GetActiveScene().name);
-			stage2IncorrectObject1.gameObject.SetActive (false);
-			stage2CorrectObject.gameObject.SetActive (false);
-			ChangeColor ("Yellow");
-			gameObject.SetActive (false);
-			SetHint (StaticGameInfo.DEFAULT_HINT);
+//			SceneManager.LoadScene (SceneManager.GetActiveScene().name);
+//			stage2IncorrectObject1.gameObject.SetActive (false);
+//			stage2CorrectObject.gameObject.SetActive (false);
+//			ChangeColor ("Yellow");
+//			gameObject.SetActive (false);
+//			SetHint (StaticGameInfo.DEFAULT_HINT);
 			break;
 		}
 	}
