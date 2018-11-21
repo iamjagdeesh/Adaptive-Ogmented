@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour {
 
@@ -30,8 +31,17 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		// mobileMovement();
+		//mobileMovement();
 		keyboardMovement();
+		//joystickMovement();
+	}
+
+	void joystickMovement() {
+		float moveHorizontal = CrossPlatformInputManager.GetAxis ("Horizontal");
+		float moveVertical = CrossPlatformInputManager.GetAxis ("Vertical");
+
+		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		rb.AddForce (movement * speed);
 	}
 
 	void keyboardMovement() {
@@ -89,22 +99,22 @@ public class PlayerController : MonoBehaviour {
 			case "Stage1IncorrectOption1":
 			case "Stage2IncorrectOption1":
 				StaticGameInfo.EndGame (false, exitObjects, arObjects);
-				SceneManager.LoadScene (SceneManager.GetActiveScene().name);
-				stage2PickUp.SetActive (true);
-				stage1CorrectOption.SetActive (false);
-				stage1IncorrectOption2.SetActive (false);
-				gameObject.SetActive (false);
-				SetHint (StaticGameInfo.DEFAULT_HINT);
+//				SceneManager.LoadScene (SceneManager.GetActiveScene().name);
+//				stage2PickUp.SetActive (true);
+//				stage1CorrectOption.SetActive (false);
+//				stage1IncorrectOption2.SetActive (false);
+//				gameObject.SetActive (false);
+//				SetHint (StaticGameInfo.DEFAULT_HINT);
 				break;
 			case "Stage1IncorrectOption2":
 			case "Stage2IncorrectOption2":
 				StaticGameInfo.EndGame (false, exitObjects, arObjects);
-				SceneManager.LoadScene (SceneManager.GetActiveScene().name);
-				stage2PickUp.SetActive (true);
-				stage1CorrectOption.SetActive (false);
-				stage1IncorrectOption1.SetActive (false);
-				gameObject.SetActive (false);
-				SetHint (StaticGameInfo.DEFAULT_HINT);
+//				SceneManager.LoadScene (SceneManager.GetActiveScene().name);
+//				stage2PickUp.SetActive (true);
+//				stage1CorrectOption.SetActive (false);
+//				stage1IncorrectOption1.SetActive (false);
+//				gameObject.SetActive (false);
+//				SetHint (StaticGameInfo.DEFAULT_HINT);
 				break;
 			case "Task3CorrectOption1":
 				stage2PickUp.SetActive (true);

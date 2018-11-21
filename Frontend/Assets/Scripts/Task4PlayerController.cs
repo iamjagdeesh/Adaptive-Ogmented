@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Task4PlayerController : MonoBehaviour {
 
@@ -32,8 +33,17 @@ public class Task4PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		// mobileMovement();
+		//mobileMovement();
 		keyboardMovement();
+		//joystickMovement();
+	}
+
+	void joystickMovement() {
+		float moveHorizontal = CrossPlatformInputManager.GetAxis ("Horizontal");
+		float moveVertical = CrossPlatformInputManager.GetAxis ("Vertical");
+
+		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		rb.AddForce (movement * speed);
 	}
 
 	void keyboardMovement() {

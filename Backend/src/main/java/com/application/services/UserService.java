@@ -95,6 +95,9 @@ public class UserService {
 
     private Long getAverageGlobalSuccessfulCompletionTime(Integer taskNumber) {
         List<UserLogs> logs = userLogsRepository.findByTaskNumberAndIsSuccess(taskNumber, "TRUE");
+        if(logs.size() == 0) {
+        	return 0L;
+        }
         Long sum = logs.stream().mapToLong(i -> i.getTimeTaken()).sum();
 
         return sum / logs.size();
@@ -102,6 +105,9 @@ public class UserService {
 
     private Long getAverageUserSuccessfulCompletionTime(Integer taskNumber, String userId) {
         List<UserLogs> logs = userLogsRepository.findByUserIdAndTaskNumberAndIsSuccess(userId, taskNumber, "TRUE");
+        if(logs.size() == 0) {
+        	return 0L;
+        }
         Long sum = logs.stream().mapToLong(i -> i.getTimeTaken()).sum();
 
         return sum / logs.size();

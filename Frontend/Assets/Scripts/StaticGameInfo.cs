@@ -20,7 +20,7 @@ public static class StaticGameInfo {
 	public static string userName;
 	public static int currentTask = 1;
 	public static string currentScene = TASK_1;
-	public static int speed = 10;
+	public static int speed = 12;
 
 	public const string DEFAULT_HINT = "Pickup the object visible!";
 	public const string HINT_T1_AFTER_S1_PICKUP = "Instantiate into an object of type Cube!";
@@ -38,7 +38,7 @@ public static class StaticGameInfo {
 	public static bool complete = false;
 	public static int noOfWallCollisions = 0;
 
-	public static string url = "http://localhost:8080/";
+	public static string url = "http://54.190.134.79:8080/";
 
 	public static Stopwatch stopWatch = null;
 
@@ -91,10 +91,10 @@ public static class StaticGameInfo {
 		long previousCompletionTime, long previousSuccessfulCompletionTime) {
 		Text taskEndingStatsText = exitObjects.transform.GetChild (0).GetComponent<Text> ();
 		string taskEndingStatsString = "End of task statistics\n\n";
-		taskEndingStatsString += "Average timetaken by all users to successfully complete: " + averageGlobalSuccessfulCompletionTime + " ms\n" 
-			+ "Average timetaken by you to successfully complete: " + averageUserSuccessfulCompletionTime + " ms\n"
-			+ "Timetaken for previous attempt: " + previousCompletionTime + " ms\n" 
-			+ "Timetaken for previous successful attempt: " + previousSuccessfulCompletionTime + " ms\n"
+		taskEndingStatsString += "Average timetaken (all users) : " + averageGlobalSuccessfulCompletionTime + " ms\n" 
+			+ "Average timetaken ("+StaticGameInfo.userName+"): " + averageUserSuccessfulCompletionTime + " ms\n"
+			+ "Previous attempt: " + previousCompletionTime + " ms\n" 
+			+ "Previous successful attempt: " + previousSuccessfulCompletionTime + " ms\n"
 			+ "Timetaken for current attempt: " + StaticGameInfo.timeTaken + " ms";
 		taskEndingStatsText.text = taskEndingStatsString;
 	}

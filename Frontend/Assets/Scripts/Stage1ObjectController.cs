@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Stage1ObjectController : MonoBehaviour {
 
@@ -30,8 +31,19 @@ public class Stage1ObjectController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		//mobileMovement();
 		keyboardMovement();
-		// mobileMovement();
+		//joystickMovement();
+	}
+
+	void joystickMovement() {
+		if (!player.activeSelf) {
+			float moveHorizontal = CrossPlatformInputManager.GetAxis ("Horizontal");
+			float moveVertical = CrossPlatformInputManager.GetAxis ("Vertical");
+
+			Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+			rb.AddForce (movement * speed);
+		}
 	}
 
 	void mobileMovement() {
