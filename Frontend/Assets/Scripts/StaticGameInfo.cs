@@ -2,10 +2,12 @@
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Web.Script.Serialization;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Diagnostics;
 
 public static class StaticGameInfo {
@@ -40,12 +42,15 @@ public static class StaticGameInfo {
 
 	public static Stopwatch stopWatch = null;
 
+	public static HttpClient httpClient = null;
+
 	public static void EndGame(bool status, GameObject exitObjects, GameObject arObjects) {
 		UnityEngine.Debug.Log ("In EndGame: Current Scene: "+StaticGameInfo.currentScene + ", currentTaskNumber: "+StaticGameInfo.currentTask);
 		StaticGameInfo.stopWatch.Stop ();
 		long timeElapsed = (long) StaticGameInfo.stopWatch.ElapsedMilliseconds;
 		StaticGameInfo.timeTaken = timeElapsed;
 		StaticGameInfo.complete = status;
+		setEndOfSceneStats (exitObjects);
 		writeToLog ();
 		arObjects.SetActive (false);
 		exitObjects.SetActive (true);
@@ -53,13 +58,45 @@ public static class StaticGameInfo {
 	}
 
 	public static async void writeToLog () {
-		HttpClient client = new HttpClient();
+		if (StaticGameInfo.httpClient == null) {
+			httpClient = new HttpClient();
+		}
 		UnityEngine.Debug.Log ("In writeLog: Current Scene: "+StaticGameInfo.currentScene + ", currentTaskNumber: "+StaticGameInfo.currentTask);
-		HttpResponseMessage response = await client.PostAsJsonAsync(StaticGameInfo.url+"user/logs/addUserLog?" +
+		HttpResponseMessage response = await httpClient.PostAsJsonAsync(StaticGameInfo.url+"user/logs/addUserLog?" +
 			"speed="+StaticGameInfo.speed+"&numberOfWallCollisions="+StaticGameInfo.noOfWallCollisions+"&taskNumber="+StaticGameInfo.currentTask
 			+"&userId="+StaticGameInfo.userName+"&isSuccess="+StaticGameInfo.complete+"&timeTaken="+StaticGameInfo.timeTaken,new MultipartContent());
 		response.EnsureSuccessStatusCode();
 		await response.Content.ReadAsAsync<UnityEngine.Object>();
+	}
+
+	public static async void setEndOfSceneStats(GameObject exitObjects) {
+		if (StaticGameInfo.httpClient == null) {
+			httpClient = new HttpClient();
+		}
+		JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
+		string settingsJson = null;
+		//bool status = false;
+		HttpResponseMessage response = await httpClient.GetAsync(StaticGameInfo.url+"user/stats/getEndOfSceneStats?userId="
+			+StaticGameInfo.userName+"&taskNumber="+StaticGameInfo.currentTask);
+		if (response.IsSuccessStatusCode)
+		{
+			settingsJson = await response.Content.ReadAsStringAsync();
+			dynamic dobj = jsonSerializer.Deserialize<dynamic>(settingsJson);
+			populateStatsBox (exitObjects, dobj ["averageGlobalSuccessfulCompletionTime"], dobj ["averageUserSuccessfulCompletionTime"], 
+				dobj ["previousCompletionTime"], dobj ["previousSuccessfulCompletionTime"]);
+		}
+	}
+
+	public static void populateStatsBox(GameObject exitObjects, long averageGlobalSuccessfulCompletionTime, long averageUserSuccessfulCompletionTime, 
+		long previousCompletionTime, long previousSuccessfulCompletionTime) {
+		Text taskEndingStatsText = exitObjects.transform.GetChild (0).GetComponent<Text> ();
+		string taskEndingStatsString = "End of task statistics\n\n";
+		taskEndingStatsString += "Average timetaken by all users to successfully complete: " + averageGlobalSuccessfulCompletionTime + " ms\n" 
+			+ "Average timetaken by you to successfully complete: " + averageUserSuccessfulCompletionTime + " ms\n"
+			+ "Timetaken for previous attempt: " + previousCompletionTime + " ms\n" 
+			+ "Timetaken for previous successful attempt: " + previousSuccessfulCompletionTime + " ms\n"
+			+ "Timetaken for current attempt: " + StaticGameInfo.timeTaken + " ms";
+		taskEndingStatsText.text = taskEndingStatsString;
 	}
 //
 //	public const Dictionary<int, string> levelToSceneDict = new Dictionary<int, string>() {
