@@ -1,7 +1,6 @@
 package com.application.pojo;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "USER_LOGS")
@@ -30,13 +29,13 @@ public class UserLogs {
     private Long timeTaken;
 
     @Column(name = "TIMESTAMP")
-    private Date timestamp;
+    private Long timestamp;
 
     public UserLogs() {
 
     }
 
-    public UserLogs(Integer speed, Integer numberOfWallCollisions, Integer taskNumber, String userId, String isSuccess, Long timeTaken, Date timestamp) {
+    public UserLogs(Integer speed, Integer numberOfWallCollisions, Integer taskNumber, String userId, String isSuccess, Long timeTaken, Long timestamp) {
         this.speed = speed;
         this.numberOfWallCollisions = numberOfWallCollisions;
         this.taskNumber = taskNumber;
@@ -94,11 +93,11 @@ public class UserLogs {
         this.timeTaken = timeTaken;
     }
 
-    public Date getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 }

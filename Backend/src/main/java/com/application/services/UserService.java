@@ -8,7 +8,6 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -44,7 +43,7 @@ public class UserService {
 
     public UserLogs addUserLog(Integer speed, Integer numberOfWallCollisions, Integer taskNumber, String userId, Boolean isSuccess, Long timeTaken) {
         String stringIsSuccess = isSuccess ? "TRUE" : "FALSE";
-        Date timestamp = new Date();
+        Long timestamp = System.currentTimeMillis();
 
         UserLogs log = new UserLogs(speed, numberOfWallCollisions, taskNumber, userId, stringIsSuccess, timeTaken, timestamp);
         userLogsRepository.save(log);
@@ -95,9 +94,10 @@ public class UserService {
 
     private Long getAverageGlobalSuccessfulCompletionTime(Integer taskNumber) {
         List<UserLogs> logs = userLogsRepository.findByTaskNumberAndIsSuccess(taskNumber, "TRUE");
-        if(logs.size() == 0) {
+        if (logs == null || logs.size() == 0) {
         	return 0L;
         }
+
         Long sum = logs.stream().mapToLong(i -> i.getTimeTaken()).sum();
 
         return sum / logs.size();
@@ -105,9 +105,10 @@ public class UserService {
 
     private Long getAverageUserSuccessfulCompletionTime(Integer taskNumber, String userId) {
         List<UserLogs> logs = userLogsRepository.findByUserIdAndTaskNumberAndIsSuccess(userId, taskNumber, "TRUE");
-        if(logs.size() == 0) {
+        if (logs == null || logs.size() == 0) {
         	return 0L;
         }
+
         Long sum = logs.stream().mapToLong(i -> i.getTimeTaken()).sum();
 
         return sum / logs.size();
@@ -115,12 +116,18 @@ public class UserService {
 
     private Long getPreviousCompletionTime(Integer taskNumber, String userId) {
         UserLogs log = userLogsRepository.findTop1ByUserIdAndTaskNumberOrderByTimestampDesc(userId, taskNumber);
+        if (log == null) {
+            return 0L;
+        }
 
         return log.getTimeTaken();
     }
 
     private Long getPreviousSuccessfulCompletionTime(Integer taskNumber, String userId) {
         UserLogs log = userLogsRepository.findTop1ByUserIdAndTaskNumberAndIsSuccessOrderByTimestampDesc(userId, taskNumber, "TRUE");
+        if (log == null) {
+            return 0L;
+        }
 
         return log.getTimeTaken();
     }

@@ -1,19 +1,15 @@
 package com.application.controller;
 
-import java.util.List;
-
+import com.application.pojo.User;
+import com.application.pojo.UserLogs;
+import com.application.scheduler.CronJobScheduler;
+import com.application.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.application.pojo.User;
-import com.application.pojo.UserLogs;
-import com.application.services.UserService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -23,6 +19,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CronJobScheduler cronJobScheduler;
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {
@@ -75,6 +74,18 @@ public class UserController {
                                      @RequestParam("taskNumber") Integer taskNumber) {
     	LOGGER.info("Getting end of scene stats for "+userId);
         return userService.getEndOfSceneStats(userId, taskNumber).toString();
+    }
+
+    @RequestMapping(value = "/cronJobs/updateSpeedForAllUsers", method = RequestMethod.GET)
+    public String updateSpeedForAllUsers() {
+        cronJobScheduler.updateSpeedForAllUsers();
+        return "DONE";
+    }
+
+    @RequestMapping(value = "/cronJobs/updateLevelOfExpertiseForAllUsers", method = RequestMethod.GET)
+    public String updateLevelOfExpertiseForAllUsers() {
+        cronJobScheduler.updateLevelOfExpertiseForAllUsers();
+        return "DONE";
     }
 
 }
