@@ -10,9 +10,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
 
 @Service
 public class UserService {
+
+    private static final Logger log = Logger.getLogger(UserService.class.getName());
 
     @Autowired
     private UserRepository userRepository;
@@ -131,6 +135,12 @@ public class UserService {
         }
 
         return log.getTimeTaken();
+    }
+
+    public JSONObject setSpeedForUser(Map<String, Object> input) {
+        log.info(input.toString());
+
+        return new JSONObject();
     }
 
 }

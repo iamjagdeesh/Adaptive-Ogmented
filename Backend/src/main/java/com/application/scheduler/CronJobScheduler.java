@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 @Service
 public class CronJobScheduler {
 
-    public static final Logger log = Logger.getLogger(CronJobScheduler.class.getName());
+    private static final Logger log = Logger.getLogger(CronJobScheduler.class.getName());
 
     @Autowired
     private UserLogsRepository userLogsRepository;
