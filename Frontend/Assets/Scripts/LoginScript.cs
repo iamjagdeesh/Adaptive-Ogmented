@@ -18,20 +18,24 @@ public class LoginScript : MonoBehaviour {
 
 	public GameObject userInfoUI;
 
+	public GameObject loginErrorText;
+
 	private HttpClient client = new HttpClient();
 
 	public async void Login () {
 		Debug.Log ("Login method!");
 		string userName = loginObjectUI.transform.GetChild (0).GetComponent<InputField> ().text;
 		string password = loginObjectUI.transform.GetChild (1).GetComponent<InputField> ().text;
-		if (await validateLogin(userName, password)) {
+		if (await validateLogin (userName, password)) {
 			Debug.Log ("Login Successful!");
 			loginObjectUI.SetActive (false);
 			DisplayUserInfoUI (userName);
 			populateStaticInfo (userName);
 			await setGameSettings (userName);
-			Debug.Log ("Current Scene: "+StaticGameInfo.currentScene + ", currentTaskNumber: "+StaticGameInfo.currentTask);
+			Debug.Log ("Current Scene: " + StaticGameInfo.currentScene + ", currentTaskNumber: " + StaticGameInfo.currentTask);
 			SceneManager.LoadScene (StaticGameInfo.currentScene);
+		} else {
+			loginErrorText.SetActive (true);	
 		}
 	}
 
@@ -47,7 +51,9 @@ public class LoginScript : MonoBehaviour {
 		registerObjectUI.SetActive (false);
 		DisplayUserInfoUI (userName);
 		populateStaticInfo (userName);
-		SceneManager.LoadScene (levelOfExpertise.options[levelOfExpertise.value].text);
+		await setGameSettings (userName);
+		Debug.Log ("Current Scene: "+StaticGameInfo.currentScene + ", currentTaskNumber: "+StaticGameInfo.currentTask);
+		SceneManager.LoadScene (StaticGameInfo.currentScene);
 	}
 
 	public void DisplayUserInfoUI (string userName) {

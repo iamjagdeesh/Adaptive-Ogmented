@@ -31,6 +31,8 @@ public static class StaticGameInfo {
 	public const string HINT_T2_AFTER_S2_PICKUP = "Choose the derived class for given object!";
 	public const string HINT_T3_AFTER_S2_PICKUP = "A car has a _____";
 	public const string LEVEL_COMPLETE = "Congratulations! Task completed.";
+	public const string FIRST_PART_OF_COLLISION_COUNT_TEXT = "Wall Collisions = ";
+	public const string FIRST_PART_OF_TIME_TAKEN_TEXT = "Time taken = ";
 
 	public static string hint = "Pickup the object visible!";
 
@@ -78,24 +80,26 @@ public static class StaticGameInfo {
 		//bool status = false;
 		HttpResponseMessage response = await httpClient.GetAsync(StaticGameInfo.url+"user/stats/getEndOfSceneStats?userId="
 			+StaticGameInfo.userName+"&taskNumber="+StaticGameInfo.currentTask);
-		if (response.IsSuccessStatusCode)
-		{
-			settingsJson = await response.Content.ReadAsStringAsync();
-			dynamic dobj = jsonSerializer.Deserialize<dynamic>(settingsJson);
+		if (response.IsSuccessStatusCode) {
+			settingsJson = await response.Content.ReadAsStringAsync ();
+			dynamic dobj = jsonSerializer.Deserialize<dynamic> (settingsJson);
 			populateStatsBox (exitObjects, dobj ["averageGlobalSuccessfulCompletionTime"], dobj ["averageUserSuccessfulCompletionTime"], 
 				dobj ["previousCompletionTime"], dobj ["previousSuccessfulCompletionTime"]);
+		} else {
+			UnityEngine.Debug.Log ("Failed");
 		}
+
 	}
 
 	public static void populateStatsBox(GameObject exitObjects, long averageGlobalSuccessfulCompletionTime, long averageUserSuccessfulCompletionTime, 
 		long previousCompletionTime, long previousSuccessfulCompletionTime) {
 		Text taskEndingStatsText = exitObjects.transform.GetChild (0).GetComponent<Text> ();
 		string taskEndingStatsString = "End of task statistics\n\n";
-		taskEndingStatsString += "Average timetaken (all users) : " + averageGlobalSuccessfulCompletionTime + " ms\n" 
-			+ "Average timetaken ("+StaticGameInfo.userName+"): " + averageUserSuccessfulCompletionTime + " ms\n"
-			+ "Previous attempt: " + previousCompletionTime + " ms\n" 
-			+ "Previous successful attempt: " + previousSuccessfulCompletionTime + " ms\n"
-			+ "Timetaken for current attempt: " + StaticGameInfo.timeTaken + " ms";
+		taskEndingStatsString += "Average timetaken (all users) : " + averageGlobalSuccessfulCompletionTime/1000 + " s\n" 
+			+ "Average timetaken ("+StaticGameInfo.userName+"): " + averageUserSuccessfulCompletionTime/1000 + " s\n"
+			+ "Previous attempt: " + previousCompletionTime/1000 + " s\n" 
+			+ "Previous successful attempt: " + previousSuccessfulCompletionTime/1000 + " s\n"
+			+ "Timetaken for current attempt: " + StaticGameInfo.timeTaken/1000 + " s";
 		taskEndingStatsText.text = taskEndingStatsString;
 	}
 //
