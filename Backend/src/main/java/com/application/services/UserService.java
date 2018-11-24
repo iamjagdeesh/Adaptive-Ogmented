@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -43,7 +44,7 @@ public class UserService {
 
     public UserLogs addUserLog(Integer speed, Integer numberOfWallCollisions, Integer taskNumber, String userId, Boolean isSuccess, Long timeTaken) {
         String stringIsSuccess = isSuccess ? "TRUE" : "FALSE";
-        Long timestamp = System.currentTimeMillis();
+        Date timestamp = new Date();
 
         UserLogs log = new UserLogs(speed, numberOfWallCollisions, taskNumber, userId, stringIsSuccess, timeTaken, timestamp);
         userLogsRepository.save(log);
