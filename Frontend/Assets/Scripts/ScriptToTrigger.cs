@@ -68,4 +68,10 @@ public class ScriptToTrigger : MonoBehaviour {
 		SceneManager.LoadScene (nextScene);
 	}
 
+	public void StartSceneAfterSpeedSet() {
+		StaticGameInfo.complete = false;
+		StaticGameInfo.hint = StaticGameInfo.DEFAULT_HINT;
+		SceneManager.LoadScene (StaticGameInfo.currentScene);
+	}
+
 }

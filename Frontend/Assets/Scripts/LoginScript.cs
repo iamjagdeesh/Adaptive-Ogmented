@@ -51,7 +51,9 @@ public class LoginScript : MonoBehaviour {
 		registerObjectUI.SetActive (false);
 		DisplayUserInfoUI (userName);
 		populateStaticInfo (userName);
-		await setGameSettings (userName);
+		StaticGameInfo.currentScene = "SpeedAdjustmentScene";
+		StaticGameInfo.currentTask = 0;
+		//await setGameSettings (userName);
 		Debug.Log ("Current Scene: "+StaticGameInfo.currentScene + ", currentTaskNumber: "+StaticGameInfo.currentTask);
 		SceneManager.LoadScene (StaticGameInfo.currentScene);
 	}

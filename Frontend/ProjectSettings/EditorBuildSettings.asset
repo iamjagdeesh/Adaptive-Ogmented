@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Task 4.unity
     guid: 213b1976336ae47c989e6913d96d4020
+  - enabled: 1
+    path: Assets/Scenes/SpeedAdjustmentScene.unity
+    guid: f8012a5b78a034830894965b4f446bfb

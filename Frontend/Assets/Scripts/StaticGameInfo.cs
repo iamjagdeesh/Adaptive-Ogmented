@@ -40,7 +40,7 @@ public static class StaticGameInfo {
 	public static bool complete = false;
 	public static int noOfWallCollisions = 0;
 
-	public static string url = "http://54.190.134.79:8080/";
+	public static string url = "http://localhost:8080/";
 
 	public static Stopwatch stopWatch = null;
 
