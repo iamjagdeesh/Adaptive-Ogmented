@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -90,8 +89,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/settings/setSpeedForUser", method = RequestMethod.POST)
-    public void setSpeedForUser(@RequestBody Map<String, Object> input) {
-        userService.setSpeedForUser(input);
+    public void setSpeedForUser(@RequestParam("userId") String userId,
+                                @RequestParam("taskNumber") Integer timeTaken) {
+        userService.setSpeedForUser(userId, timeTaken);
     }
 
 }

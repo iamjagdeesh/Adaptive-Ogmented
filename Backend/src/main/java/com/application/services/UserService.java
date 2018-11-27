@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 @Service
@@ -186,9 +185,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void setSpeedForUser(Map<String, Object> input) {
-        User user = userRepository.findByUserId((String) input.get("userId"));
-        Integer timeTaken = (Integer) input.get("timeTaken");
+    public void setSpeedForUser(String userId, Integer timeTaken) {
+        User user = userRepository.findByUserId(userId);
         Long globalAverageTimeTaken = getAverageGlobalSuccessfulCompletionTime(0);
         Long difference = globalAverageTimeTaken - timeTaken;
         Double speed = 10 + (difference * 0.05);
