@@ -32,11 +32,14 @@ public class UserLogs {
     @Column(name = "TIMESTAMP")
     private Date timestamp;
 
+    @Column(name = "PROCESSED")
+    private String processed;
+
     public UserLogs() {
 
     }
 
-    public UserLogs(Integer speed, Integer numberOfWallCollisions, Integer taskNumber, String userId, String isSuccess, Long timeTaken, Date timestamp) {
+    public UserLogs(Integer speed, Integer numberOfWallCollisions, Integer taskNumber, String userId, String isSuccess, Long timeTaken, Date timestamp, String processed) {
         this.speed = speed;
         this.numberOfWallCollisions = numberOfWallCollisions;
         this.taskNumber = taskNumber;
@@ -44,6 +47,15 @@ public class UserLogs {
         this.isSuccess = isSuccess;
         this.timeTaken = timeTaken;
         this.timestamp = timestamp;
+        this.processed = processed;
+    }
+
+    public String getProcessed() {
+        return processed;
+    }
+
+    public void setProcessed(String processed) {
+        this.processed = processed;
     }
 
     public Integer getSpeed() {

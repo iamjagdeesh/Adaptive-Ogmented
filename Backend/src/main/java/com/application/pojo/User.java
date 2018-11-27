@@ -19,13 +19,13 @@ public class User {
     private Integer levelOfExpertise;
 
     @Column(name = "SPEED")
-    private Integer speed;
+    private Float speed;
 
     public User() {
 
     }
 
-    public User(String userId, String password, Integer levelOfExpertise, Integer speed) {
+    public User(String userId, String password, Integer levelOfExpertise, Float speed) {
         this.userId = userId;
         this.password = password;
         this.levelOfExpertise = levelOfExpertise;
@@ -56,11 +56,11 @@ public class User {
         this.levelOfExpertise = levelOfExpertise;
     }
 
-    public Integer getSpeed() {
+    public Float getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Integer speed) {
+    public void setSpeed(Float speed) {
         this.speed = speed;
     }
 }

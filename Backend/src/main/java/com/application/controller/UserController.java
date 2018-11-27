@@ -4,7 +4,6 @@ import com.application.pojo.User;
 import com.application.pojo.UserLogs;
 import com.application.scheduler.CronJobScheduler;
 import com.application.services.UserService;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,21 +79,19 @@ public class UserController {
 
     @RequestMapping(value = "/cronJobs/updateSpeedForAllUsers", method = RequestMethod.GET)
     public String updateSpeedForAllUsers() {
-        cronJobScheduler.updateSpeedForAllUsers();
+        userService.updateSpeedForAllUsers();
         return "DONE";
     }
 
     @RequestMapping(value = "/cronJobs/updateLevelOfExpertiseForAllUsers", method = RequestMethod.GET)
     public String updateLevelOfExpertiseForAllUsers() {
-        cronJobScheduler.updateLevelOfExpertiseForAllUsers();
+        userService.updateLevelOfExpertiseForAllUsers();
         return "DONE";
     }
 
     @RequestMapping(value = "/settings/setSpeedForUser", method = RequestMethod.POST)
-    public JSONObject setSpeedForUser(@RequestBody Map<String, Object> input) {
-        JSONObject result = userService.setSpeedForUser(input);
-
-        return result;
+    public void setSpeedForUser(@RequestBody Map<String, Object> input) {
+        userService.setSpeedForUser(input);
     }
 
 }

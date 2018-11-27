@@ -21,4 +21,6 @@ public interface UserLogsRepository extends JpaRepository<UserLogs, Integer> {
 
     UserLogs findTop1ByUserIdAndTaskNumberOrderByTimestampDesc(String userId, Integer taskNumber);
 
+    List<UserLogs> findByUserIdAndProcessed(String userId, String processed);
+
 }

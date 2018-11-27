@@ -25,7 +25,8 @@ public class UserService {
     private UserLogsRepository userLogsRepository;
 
     public User addUser(String userId, String password, Integer levelOfExpertise) {
-        User user = new User(userId, password, levelOfExpertise, 10);
+        Float defaultSpeed = Double.valueOf(10.0).floatValue();
+        User user = new User(userId, password, levelOfExpertise, defaultSpeed);
         userRepository.save(user);
 
         return user;
@@ -50,7 +51,7 @@ public class UserService {
         String stringIsSuccess = isSuccess ? "TRUE" : "FALSE";
         Date timestamp = new Date();
 
-        UserLogs log = new UserLogs(speed, numberOfWallCollisions, taskNumber, userId, stringIsSuccess, timeTaken, timestamp);
+        UserLogs log = new UserLogs(speed, numberOfWallCollisions, taskNumber, userId, stringIsSuccess, timeTaken, timestamp, "FALSE");
         userLogsRepository.save(log);
 
         return log;
@@ -137,10 +138,69 @@ public class UserService {
         return log.getTimeTaken();
     }
 
-    public JSONObject setSpeedForUser(Map<String, Object> input) {
-        log.info(input.toString());
+    public void updateSpeedForAllUsers() {
+        log.info("Updating speed for all users");
+        List<User> users = userRepository.findAll();
+        for (User user : users) {
+            updateSpeedForUser(user);
+        }
+    }
 
-        return new JSONObject();
+    private void updateSpeedForUser(User user) {
+        List<UserLogs> logs = userLogsRepository.findByUserIdAndProcessed(user.getUserId(), "FALSE");
+        Float currentSpeed = user.getSpeed();
+        Double updatedSpeed = Double.valueOf(currentSpeed);
+
+        for (UserLogs log : logs) {
+            if (log.getNumberOfWallCollisions() == 0) {
+                updatedSpeed += 0.5;
+            } else {
+                updatedSpeed -= (0.1 * log.getNumberOfWallCollisions());
+            }
+            log.setProcessed("TRUE");
+            userLogsRepository.save(log);
+        }
+
+        user.setSpeed(updatedSpeed.floatValue());
+        userRepository.save(user);
+    }
+
+    public void updateLevelOfExpertiseForAllUsers() {
+        log.info("Updating level of expertise for all users");
+        List<User> users = userRepository.findAll();
+        for (User user : users) {
+            updateLevelOfExpertiseForUser(user);
+        }
+    }
+
+    private void updateLevelOfExpertiseForUser(User user) {
+        Integer levelOfExpertise;
+        UserLogs latestSuccessfulLog = userLogsRepository.findTop1ByUserIdAndIsSuccessOrderByTimestampDesc(user.getUserId(), "TRUE");
+        if (latestSuccessfulLog == null) {
+            levelOfExpertise = 1;
+        } else {
+            levelOfExpertise = latestSuccessfulLog.getTaskNumber();
+        }
+
+        user.setLevelOfExpertise(levelOfExpertise);
+        userRepository.save(user);
+    }
+
+    public void setSpeedForUser(Map<String, Object> input) {
+        User user = userRepository.findByUserId((String) input.get("userId"));
+        Integer timeTaken = (Integer) input.get("timeTaken");
+        Long globalAverageTimeTaken = getAverageGlobalSuccessfulCompletionTime(0);
+        Long difference = globalAverageTimeTaken - timeTaken;
+        Double speed = 10 + (difference * 0.05);
+
+        if (speed < 6) {
+            speed = 6.0;
+        } else if (speed > 14) {
+            speed = 14.0;
+        }
+
+        user.setSpeed(speed.floatValue());
+        userRepository.save(user);
     }
 
 }

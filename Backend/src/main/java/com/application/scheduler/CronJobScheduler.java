@@ -1,7 +1,6 @@
 package com.application.scheduler;
 
-import com.application.repositories.UserLogsRepository;
-import com.application.repositories.UserRepository;
+import com.application.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -14,19 +13,12 @@ public class CronJobScheduler {
     private static final Logger log = Logger.getLogger(CronJobScheduler.class.getName());
 
     @Autowired
-    private UserLogsRepository userLogsRepository;
-
-    @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Scheduled(cron = "*/30 * * * * *")
-    public void updateSpeedForAllUsers() {
-        log.info("Updating speed for all users");
-    }
-
-    @Scheduled(cron = "*/30 * * * * *")
-    public void updateLevelOfExpertiseForAllUsers() {
-        log.info("Updating level of expertise for all users");
+    public void updateAllUsersSettings() {
+        userService.updateSpeedForAllUsers();
+        userService.updateLevelOfExpertiseForAllUsers();
     }
 
 }
