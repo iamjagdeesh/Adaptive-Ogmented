@@ -24,7 +24,7 @@ public class UserService {
     private UserLogsRepository userLogsRepository;
 
     public User addUser(String userId, String password, Integer levelOfExpertise) {
-        Float defaultSpeed = Double.valueOf(10.0).floatValue();
+        Integer defaultSpeed = 10;
         User user = new User(userId, password, levelOfExpertise, defaultSpeed);
         userRepository.save(user);
 
@@ -147,7 +147,7 @@ public class UserService {
 
     private void updateSpeedForUser(User user) {
         List<UserLogs> logs = userLogsRepository.findByUserIdAndProcessed(user.getUserId(), "FALSE");
-        Float currentSpeed = user.getSpeed();
+        Integer currentSpeed = user.getSpeed();
         Double updatedSpeed = Double.valueOf(currentSpeed);
 
         for (UserLogs log : logs) {
@@ -160,7 +160,7 @@ public class UserService {
             userLogsRepository.save(log);
         }
 
-        user.setSpeed(updatedSpeed.floatValue());
+        user.setSpeed(updatedSpeed.intValue());
         userRepository.save(user);
     }
 
@@ -197,7 +197,7 @@ public class UserService {
             speed = 14.0;
         }
 
-        user.setSpeed(speed.floatValue());
+        user.setSpeed(speed.intValue());
         userRepository.save(user);
     }
 
