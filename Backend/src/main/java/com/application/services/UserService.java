@@ -160,6 +160,12 @@ public class UserService {
             userLogsRepository.save(log);
         }
 
+        if (updatedSpeed < 6) {
+            updatedSpeed = 6.0;
+        } else if (updatedSpeed > 14) {
+            updatedSpeed = 14.0;
+        }
+
         user.setSpeed(updatedSpeed.intValue());
         userRepository.save(user);
     }
