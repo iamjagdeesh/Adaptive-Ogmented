@@ -25,11 +25,11 @@ public static class StaticGameInfo {
 	public const string DEFAULT_HINT = "Pickup the object visible!";
 	public const string HINT_T1_AFTER_S1_PICKUP = "Instantiate into an object of type Cube!";
 	public const string HINT_T2_AFTER_S1_PICKUP = "Choose the base class for human evolution!";
-	public const string HINT_T3_AFTER_S1_PICKUP = "A car has a _____";
+	public const string HINT_T3_AFTER_S1_PICKUP = "A house has a _____";
 	public const string HINT_T4_AFTER_S1_PICKUP = "Choose different objects to see how the same area method is called!";
 	public const string HINT_T1_AFTER_S2_PICKUP = "Set the object's color attribute to Green!";
 	public const string HINT_T2_AFTER_S2_PICKUP = "Choose the derived class for given object!";
-	public const string HINT_T3_AFTER_S2_PICKUP = "A car has a _____";
+	public const string HINT_T3_AFTER_S2_PICKUP = "A house has a _____";
 	public const string LEVEL_COMPLETE = "Congratulations! Task completed.";
 	public const string FIRST_PART_OF_COLLISION_COUNT_TEXT = "Wall Collisions = ";
 	public const string FIRST_PART_OF_TIME_TAKEN_TEXT = "Time taken = ";
@@ -40,7 +40,7 @@ public static class StaticGameInfo {
 	public static bool complete = false;
 	public static int noOfWallCollisions = 0;
 
-	public static string url = "http://localhost:8080/";
+	public static string url = "http://54.201.122.204:8080/";
 
 	public static Stopwatch stopWatch = null;
 

@@ -31,8 +31,8 @@ public class Stage1ObjectController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		//mobileMovement();
-		keyboardMovement();
+		mobileMovement();
+		//keyboardMovement();
 		//joystickMovement();
 	}
 

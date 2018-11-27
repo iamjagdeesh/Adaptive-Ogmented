@@ -33,8 +33,8 @@ public class Task4PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		//mobileMovement();
-		keyboardMovement();
+		mobileMovement();
+		//keyboardMovement();
 		//joystickMovement();
 	}
 

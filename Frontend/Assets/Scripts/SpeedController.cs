@@ -31,8 +31,8 @@ public class SpeedController : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		//mobileMovement();
-		keyboardMovement();
+		mobileMovement();
+		//keyboardMovement();
 		//joystickMovement();
 	}
 
