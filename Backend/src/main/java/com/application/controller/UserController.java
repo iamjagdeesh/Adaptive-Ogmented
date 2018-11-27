@@ -90,7 +90,7 @@ public class UserController {
 
     @RequestMapping(value = "/settings/setSpeedForUser", method = RequestMethod.POST)
     public void setSpeedForUser(@RequestParam("userId") String userId,
-                                @RequestParam("taskNumber") Integer timeTaken) {
+                                @RequestParam("timeTaken") Integer timeTaken) {
         userService.setSpeedForUser(userId, timeTaken);
     }
 

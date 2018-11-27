@@ -151,11 +151,11 @@ public class UserService {
         Double updatedSpeed = Double.valueOf(currentSpeed);
 
         for (UserLogs log : logs) {
-            if (log.getNumberOfWallCollisions() == 0) {
-                updatedSpeed += 0.5;
-            } else {
-                updatedSpeed -= (0.1 * log.getNumberOfWallCollisions());
-            }
+            Long globalTimeTaken = getAverageGlobalSuccessfulCompletionTime(log.getTaskNumber());
+            long difference = globalTimeTaken - log.getTimeTaken();
+
+            updatedSpeed += (difference * 0.05);
+
             log.setProcessed("TRUE");
             userLogsRepository.save(log);
         }
