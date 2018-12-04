@@ -1420,7 +1420,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 1
 --- !u!1 &894199274
 GameObject:
@@ -2354,7 +2354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1320569440
 Transform:
   m_ObjectHideFlags: 0
@@ -3014,27 +3014,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4923675184754070, guid: 912275f92af0eae43987638e709f2a77, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.0901
+      value: 0.1035
       objectReference: {fileID: 0}
     - target: {fileID: 4923675184754070, guid: 912275f92af0eae43987638e709f2a77, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.1646
+      value: -0.136
       objectReference: {fileID: 0}
     - target: {fileID: 4923675184754070, guid: 912275f92af0eae43987638e709f2a77, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.016015097
+      value: 0.0040157386
       objectReference: {fileID: 0}
     - target: {fileID: 4923675184754070, guid: 912275f92af0eae43987638e709f2a77, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.78571844
+      value: 0.691968
       objectReference: {fileID: 0}
     - target: {fileID: 4923675184754070, guid: 912275f92af0eae43987638e709f2a77, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.6183736
+      value: 0.7218311
       objectReference: {fileID: 0}
     - target: {fileID: 4923675184754070, guid: 912275f92af0eae43987638e709f2a77, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.0020480428
+      value: -0.011138818
       objectReference: {fileID: 0}
     - target: {fileID: 4923675184754070, guid: 912275f92af0eae43987638e709f2a77, type: 2}
       propertyPath: m_RootOrder
@@ -3058,15 +3058,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4923675184754070, guid: 912275f92af0eae43987638e709f2a77, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -76.329
+      value: -87.512
       objectReference: {fileID: 0}
     - target: {fileID: 4923675184754070, guid: 912275f92af0eae43987638e709f2a77, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -6.7310004
+      value: 194.03
       objectReference: {fileID: 0}
     - target: {fileID: 4923675184754070, guid: 912275f92af0eae43987638e709f2a77, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -174.40901
+      value: -732.802
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205592427175424, guid: 912275f92af0eae43987638e709f2a77, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 912275f92af0eae43987638e709f2a77, type: 2}
@@ -3092,7 +3096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b795d2614b3a84385b4487a4ed42baf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 17
   stage1: {fileID: 1597076709}
   stage2: {fileID: 722073266}
   stage2PickUp: {fileID: 441604101}
@@ -3123,8 +3127,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1646073535}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 2.5
+  m_Mass: 10
+  m_Drag: 1.5
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0

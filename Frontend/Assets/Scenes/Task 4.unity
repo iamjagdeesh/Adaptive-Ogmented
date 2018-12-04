@@ -2436,7 +2436,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1230265857}
   - component: {fileID: 1230265862}
-  - component: {fileID: 1230265861}
   - component: {fileID: 1230265860}
   - component: {fileID: 1230265859}
   - component: {fileID: 1230265858}
@@ -2521,18 +2520,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1230265861
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1230265856}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1230265862
 MeshFilter:
   m_ObjectHideFlags: 0

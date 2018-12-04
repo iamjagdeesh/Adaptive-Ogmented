@@ -90,6 +90,7 @@ public class SpeedController : MonoBehaviour {
 	async void gameEndThings () {
 		hintText.text = StaticGameInfo.LEVEL_COMPLETE;
 		StaticGameInfo.EndGame (true, exitObjects, arObjects);
+		bool statusDummy = await setGameSpeed (StaticGameInfo.userName, (int)StaticGameInfo.timeTaken);
 		bool status = await setGameSettings (userName.text);
 		if (!status) {
 			Debug.Log ("Failed");
@@ -114,5 +115,11 @@ public class SpeedController : MonoBehaviour {
 			status = true;
 		}
 		return status;
+	}
+
+	public async Task<bool> setGameSpeed (string username, int timetaken) {
+		HttpResponseMessage response = await client.PostAsJsonAsync(StaticGameInfo.url+"user/settings/setSpeedForUser?userId="+username+"&timeTaken="+timetaken, new MultipartContent());
+		response.EnsureSuccessStatusCode();
+		return true;
 	}
 }

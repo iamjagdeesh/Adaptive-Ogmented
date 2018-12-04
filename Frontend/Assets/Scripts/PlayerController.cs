@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour {
 		float moveVertical = Input.GetAxis ("Vertical");
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		string activeSceneName = SceneManager.GetActiveScene ().name;
+		if (activeSceneName == StaticGameInfo.TASK_3) {
+			speed = speed * 3;
+		}
 		rb.AddForce (movement * speed);
 	}
 
