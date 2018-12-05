@@ -19,5 +19,5 @@
 1. This is the unity application.
 2. Install unity to run this application.
 
-### APK:
-1. This folder contains the apk which can be installed on Android phone to access this application.
+### Youtube Video Link
+https://youtu.be/FYJyMsvXRsw
