@@ -4,7 +4,7 @@
 
 ### Team Members
 1. Aditya Chayapathy
-2. Avinash Kumar
+2. Avinash VijayaKumar
 3. Jagdeesh Basavaraju
 4. Spoorthi Karnati
 
