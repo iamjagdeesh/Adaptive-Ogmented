@@ -1,6 +1,14 @@
 # CSE 591 Adaptive Web
 
-## Adaptive Ogmented Project
+## Unity Application for OOPs Tutorial (Adaptive Ogmented Project)
+
+This is a Unity application aimed to teach object oriented programming concepts to users. The application is based on user adaptation and augmented reality techniques.
+
+1. Collected Implicit & Explicit user feedback as the user uses the application.
+2. Adjusted app settings adaptively based on the utilization.
+3. Recommended tasks dynamically to the user based on his expertise. (User Profiling)
+4. Demonstrated Open Social User Modelling by displaying user individual and group statistics.
+
 
 ### Team Members
 1. Aditya Chayapathy
